@@ -1,0 +1,93 @@
+<!-- test canvas-->
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+
+
+canvas { background: #eee; }
+
+#body{
+  height:100%;
+  width:100%;
+  display:flex;
+justify-content:center;
+align-content:center;
+}
+
+#plateau
+{
+  display:flex;
+justify-content:center;
+align-content:center;
+}
+
+    </style>
+  </head>
+  <body>
+    <div id=plateau>
+          <canvas id="myCanvas" width=800px height=800px> </canvas>
+    </div>
+
+
+  </body>
+</html>
+
+<script >
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+w=ctx.canvas.width ;
+h=ctx.canvas.height;
+
+
+// taille des cases
+var nBcaseW = 8;
+var nBcaseH = 8;
+var taillecaseW=w/nBcaseW;
+var taillecaseH=h/nBcaseH;
+
+// création des cases
+numeroCase=0;
+for (y=0; y<nBcaseW; y++)
+{
+    for (i=0; i<nBcaseH; i++)
+    {
+      var numeroCase = numeroCase+1;
+      ctx.beginPath();
+      //ctx.rect(x, y, width, height);
+      ctx.rect(1+taillecaseW*i, 1+taillecaseH*y, taillecaseW-1, taillecaseH-1);
+      ctx.fillStyle = "lightpink";
+      ctx.strokeStyle = "black";
+      ctx.stroke();
+      ctx.fill();
+      ctx.closePath();
+      ctx.font = '100px';
+      ctx.textBaseline = 'hanging';
+      ctx.textAlign = "center";
+      //ctx.strokeText(texte, x, y [, largeurMax]);
+      var str="case " + numeroCase;
+      ctx.strokeText(str, 1+taillecaseW*i+50, 1+taillecaseH*y+50);
+    }
+  }
+
+
+// pion rouge
+alert("position du pion ?")
+var c=prompt("quelle colonne ?")
+var l=prompt("quelle ligne ")
+  ctx.beginPath();
+  //ctx.arc(x, y, rayon, angleDépart, angleFin, sensAntiHoraire);
+  ctx.arc(1+(taillecaseW/2)+(c-1)*taillecaseW, 1+(taillecaseH/2)+(l-1)*taillecaseH, taillecaseH/2, 0, Math.PI*2, false);
+  ctx.fillStyle = "red";
+  ctx.fill();
+  ctx.closePath();
+
+
+
+
+
+</script>
