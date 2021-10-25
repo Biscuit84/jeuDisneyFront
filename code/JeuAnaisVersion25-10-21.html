@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+  integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+  integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+
+
+<style>
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    background-image: url(../img/princess.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+
+
+  #ecranconnec {
+    width: 100%;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #connex {
+    color: black;
+  }
+
+  #BasPage {
+    background-color: lightgrey;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    opacity: 50%;
+  }
+
+  #BasPage span {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+
+
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .logo_menu {
+    width: 5em;
+    height: 4em;
+    filter: drop-shadow(-10px 1px 4px Grey);
+    transform: rotate(-10deg);
+  }
+
+  .container-fluid {
+    background-color: #dbbadba1;
+    color: purple;
+  }
+
+
+  .navbar-light .navbar-nav .nav-link:hover {
+    color: white;
+  }
+
+
+
+  .navbar {
+    padding-top: 0rem;
+    padding-bottom: 0rem;
+  }
+
+  #ecranDeJeu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #dbbadbc4;
+  }
+
+  #jeu {
+    flex-grow: 8;
+    border: solid grey 2px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  #interfaceUtilisateur {
+    flex-grow: 4;
+    border: solid grey 2px;
+    border-radius: 5px;
+    background-color: #dbbadbc4;
+  }
+
+  .bouton {
+    align-self: center;
+  }
+</style>
+
+<body id="page">
+
+  <!-- barre en haut de page-->
+  <div id="barre">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div id="logo">
+          <img src="../img/logoPrincessA.png" class="logo_menu" />
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Le jeu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Qui sommes nous ?</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Actualités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Connexion</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <!--fin de la barre-->
+
+
+  <!-- Plateau de jeu-->
+
+  <div id="ecranDeJeu">
+    <div id="jeu">
+
+
+      <div id="canvasesdiv" style="position:relative; width:800px; height:800px">
+        <!-- mon quadrillage -->
+        <canvas id="myCanvas" width=800px height=800px> </canvas>
+        <!-- mon background dont les cases sont les memes tailles que le quadrillage -->
+        <canvas id="background" style="z-index: 1; position:absolute; left:0px;top:0px;" height="800px" width="800px">
+        </canvas>
+        <!-- mon perso -->
+        <canvas id="player" style="z-index: 2; position:absolute;left:0px;top:0px;" height="800px" width="800px">
+        </canvas>
+      </div>
+
+      <!-- boutons Avance et Recule-->
+      <div class="de">
+        <div class="Avance">
+          <button type="button" class="btn btn-primary bouton" onclick="Avance();">Avance</button>
+          <p>Lancé de dé: <span id="valeurDeAvance">0</span></p>
+        </div>
+        <div class="Recule">
+          <button type="button" class="btn btn-primary bouton" onclick="Recule();">Recule</button>
+          <p>Lancé de dé: <span id="valeurDeRecule">0</span></p>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="interfaceUtilisateur">
+
+
+    </div>
+
+  </div>
+
+
+
+
+</body>
+
+<!--fin de connexion-->
+<footer>
+  <div id="BasPage">
+    <span class="textBas">Photos non contractuelles</span>
+  </div>
+  <!--fin de bas de page-->
+</footer>
+
+<!--script jeu-->
+
+<script>
+  var velocity = 1;
+  var canvas = document.getElementById("myCanvas");
+  var ctx = canvas.getContext("2d");
+  w = ctx.canvas.width;
+  h = ctx.canvas.height;
+
+  // taille des cases
+  var nBcaseW = 8;
+  var nBcaseH = 8;
+  var taillecaseW = w / nBcaseW;
+  var taillecaseH = h / nBcaseH;
+  var listeCases = [];
+
+  //initie le Quadrillage
+  initQuadrillage();
+
+  var background;
+  var ctxBackground;
+  var player;
+  var ctxPlayer;
+  var backgroundImage = new Image();
+  var backgroundPlayer = new Image();
+  var positionXPlayer = 0;
+  var positionYPlayer = 0;
+  var futurPositionXPlayer = 0;
+  var futurPositionYPlayer = 0;
+  var positionIndexCasePlayer = 0;
+  var futurePositionIndexCasePlayer;
+
+  //à quel index de la liste de Cases se trouve le joueur:
+
+  console.log("listeCases : ", listeCases);
+
+  //initier les couches supérieures
+  init();
+
+  function init() {
+    backgroundImage.src = "../img/background_lvl1 - Copie.png";
+    backgroundPlayer.src = "../img/milkandmocha.jpg";
+    background = document.getElementById("background");
+    ctxBackground = background.getContext("2d");
+    player = document.getElementById("player");
+    ctxPlayer = player.getContext("2d");
+    setInterval(drawAll, 10);
+  }
+
+  //dessine le fond d'écran et le joueur
+  function drawAll() {
+    drawBackground();
+    drawPlayer();
+  }
+
+  // dessine le fond d'ecran
+  function drawBackground() {
+    //clearRect(positionx, position y, positionfinale x, position finale y)
+    ctxBackground.clearRect(0, 0, 800, 800);
+    ctxBackground.drawImage(backgroundImage, 0, 0);
+  }
+
+  // dessine le joueur
+  function drawPlayer() {
+    //clear pour refresh
+    ctxPlayer.clearRect(0, 0, 800, 800);
+
+    // trouver A quel index de case se trouve le joueur
+    for (var i in listeCases) {
+      if (listeCases[i].positionCaseX === positionXPlayer && listeCases[i].positionCaseY === positionYPlayer) {
+        positionIndexCasePlayer = i;
+      }
+    }
+
+    //trouver les index suivants et précédents
+    var positionIndexCasePlayerSuivante = positionIndexCasePlayer;
+    positionIndexCasePlayerSuivante++;
+    var positionIndexCasePlayerPrecedente = positionIndexCasePlayer;
+    positionIndexCasePlayerPrecedente--;
+
+    // rentre dans la boucle seulement si l'index <= à la longueur de la liste des cases du plateau
+    if (positionIndexCasePlayerSuivante <= this.listeCases.length - 1 || positionIndexCasePlayerPrecedente >= 0) {
+
+      //TODO actualiser le gif de déplacement en fonction de la direction :
+      // attention, le refresh est de 10ms, à trouver une solution pour ne pas refresh le gif a chaque fois
+
+
+      //avancer la position X du joueur
+      if (positionXPlayer < futurPositionXPlayer) {
+        // avancer case par case
+        if (listeCases[positionIndexCasePlayer].positionCaseX < listeCases[positionIndexCasePlayerSuivante].positionCaseX) {
+          positionXPlayer += velocity;
+        }
+
+      }
+
+      //reculer la position X du joueur
+      if (positionXPlayer > futurPositionXPlayer) {
+        //reculer case par case
+        if (listeCases[positionIndexCasePlayer].positionCaseX > listeCases[positionIndexCasePlayerPrecedente].positionCaseX) {
+          positionXPlayer -= velocity;
+        }
+
+      }
+
+      //avancer la position y du joueur
+      if (positionYPlayer < futurPositionYPlayer) {
+        // avancer case par case
+        if (listeCases[positionIndexCasePlayer].positionCaseY < listeCases[positionIndexCasePlayerSuivante].positionCaseY) {
+          positionYPlayer += velocity;
+        }
+      }
+
+      //reculer la position y du joueur
+      if (positionYPlayer > futurPositionYPlayer) {
+          //reculer case par case
+        if (listeCases[positionIndexCasePlayer].positionCaseY > listeCases[positionIndexCasePlayerPrecedente].positionCaseY) {
+          positionYPlayer -= velocity;
+        }
+      }
+    }
+
+// redessiner le player pour le refresh
+    ctxPlayer.drawImage(backgroundPlayer, positionXPlayer, positionYPlayer);
+
+  }
+
+  function initQuadrillage() {
+    // création des cases
+    numeroCase = 0;
+    for (y = 0; y < nBcaseW; y++) {
+      for (i = 0; i < nBcaseH; i++) {
+        var Case = {
+          numero: 0,
+          positionCaseX: 0,
+          positionCaseY: 0
+
+        }
+        numeroCase++;
+        Case.numero = numeroCase;
+        Case.positionCaseX = (taillecaseW * i);
+        Case.positionCaseY = (taillecaseH * y);
+        if (numeroCase == 1 || numeroCase == 2 || numeroCase == 3 || numeroCase == 4 || numeroCase == 12 || numeroCase == 20 || numeroCase == 28 || numeroCase == 36 || numeroCase == 44 || numeroCase == 45 || numeroCase == 53 || numeroCase == 61 || numeroCase == 62) {
+          listeCases.push(Case);
+        }
+
+        ctx.beginPath();
+        ctx.rect(1 + taillecaseW * i, 1 + taillecaseH * y, taillecaseW, taillecaseH);
+        ctx.closePath();
+      }
+    }
+    //console.log(listeCases);
+  }
+
+  function Avance() {
+
+    //random de 1 à 6
+    var lanceDe = Math.floor(Math.random() * 6) + 1
+
+    // Affiche la valeur du dé dans le html
+    var monDeAvance = document.getElementById("valeurDeAvance");
+    monDeAvance.innerHTML = lanceDe;
+
+    //calcule le nouvel index:
+    var nouvelIndex = Number(positionIndexCasePlayer) + Number(lanceDe);
+
+    // gere le cas où on dépasse la case arrivee
+    if (nouvelIndex > listeCases.length - 1) {
+      nouvelIndex = listeCases.length - 1;
+    }
+
+    //détermine la future position X et Y du player
+    futurePositionIndexCasePlayer = nouvelIndex;
+    futurPositionXPlayer = listeCases[futurePositionIndexCasePlayer].positionCaseX;
+    futurPositionYPlayer = listeCases[futurePositionIndexCasePlayer].positionCaseY;
+  }
+
+  function Recule() {
+
+    var lanceDe = Math.floor(Math.random() * 6) + 1;
+
+    // Affiche la valeur du dé dans le html
+    var monDeRecule = document.getElementById("valeurDeRecule");
+    monDeRecule.innerHTML = lanceDe;
+
+    //calcule le nouvel index:
+    var nouvelIndex = Number(positionIndexCasePlayer) - Number(lanceDe);
+    // gere le cas où on dépasse la case depart
+    if (nouvelIndex < 0) {
+      nouvelIndex = 0;
+    }
+
+    //détermine la future position X et Y du player
+    futurePositionIndexCasePlayer = nouvelIndex;
+    futurPositionXPlayer = listeCases[futurePositionIndexCasePlayer].positionCaseX;
+    futurPositionYPlayer = listeCases[futurePositionIndexCasePlayer].positionCaseY;
+  }
+
+
+</script>
+
+
+
+
+
+
+</html>
