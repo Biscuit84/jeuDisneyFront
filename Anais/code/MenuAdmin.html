@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+<head>
+  <meta charset="utf-8">
+  <title>Jeu Disney_Menu Admin</title>
+  <link rel="icon" type="image/png" href="">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+    integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+
+
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+
+  <link rel="stylesheet" href="admin.css">
+
+  <meta name="description" content="Jeu plateau sur le thème Disney">
+  <meta name="keywords" content="disney,game,jeu">
+</head>
+
+<!--//////////////////////////BODY////////////////////////-->
+
+<body>
+  <!--//////////////////////////HEADER////////////////////////-->
+  <header>
+    <!--div haut-->
+    <div class="haut">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+        <div class="container-fluid">
+          <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              <img src="../img/avatar/avatar_mickey.png" class="logo_admin rounded-circle" id="avatarAdmin" />
+            </button>
+
+            <ul class="dropdown-menu"  id="avatars">
+              <li class="d-flex flex-row mb-3">
+                <a class="dropdown-item choixAvatar" href="#"><img id="avatar1" onclick="changeAvatar(event)"
+                    src="../img/avatar/avatar_elsa.png" class="logo_avatar rounded-circle" /></a>
+                <a class="dropdown-item choixAvatar" id="avatarMulan" href="#"><img id="avatar2" onclick="changeAvatar(event)" src="../img/avatar/avatar_ariel.jpg"
+                    class="logo_avatar rounded-circle" /></a>
+                    <a class="dropdown-item choixAvatar" id="avatarAurore" href="#"><img id="avatar3" onclick="changeAvatar(event)" src="../img/avatar/avatar_aurore.jpg"
+                      class="logo_avatar rounded-circle" /></a>
+              </li>
+              <li class="d-flex flex-row mb-3">
+                <a class="dropdown-item choixAvatar" id="avatarJasmine" href="#"><img id="avatar5" onclick="changeAvatar(event)" src="../img/avatar/avatar_belle.jpg"
+                    class="logo_avatar rounded-circle" /></a>
+                <a class="dropdown-item choixAvatar" id="avatarRaiponce" href="#"><img id="avatar6" onclick="changeAvatar(event)" src="../img/avatar/avatar_blanche_neige.jpg"
+                    class="logo_avatar rounded-circle" /></a>
+                    <a class="dropdown-item choixAvatar" id="avatarCendrillon" href="#"><img id="avatar4" onclick="changeAvatar(event)" src="../img/avatar/avatar_cendrillon.jpg"
+                      class="logo_avatar rounded-circle" /></a>
+              </li>
+              <li class="d-flex flex-row mb-3">
+                <a class="dropdown-item choixAvatar" id="avatarBlancheNeige" href="#"><img id="avatar7" onclick="changeAvatar(event)" src="../img/avatar/avatar_jasmine.jpg"
+                    class="logo_avatar rounded-circle" /></a>
+                <a class="dropdown-item choixAvatar" id="avatarBelle" href="#"><img id="avatar8" onclick="changeAvatar(event)" src="../img/avatar/avatar_mulan.jpg"
+                    class="logo_avatar rounded-circle" /></a>
+                    <a class="dropdown-item choixAvatar" id="avatarAriel" href="#"><img id="avatar9" onclick="changeAvatar(event)" onclick="changeAvatar(event)"
+                      src="../img/avatar/avatar_raiponce.jpg" class="logo_avatar rounded-circle" /></a>
+              </li>
+              <li class="d-flex flex-row mb-3">
+                <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar10" onclick="changeAvatar(event)" src="../img/avatar/avatar_tiana.jpg"
+                    class="logo_avatar rounded-circle" /></a>
+                    <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar11" onclick="changeAvatar(event)" src="../img/avatar/avatar_mickey.png"
+                      class="logo_avatar rounded-circle" /></a>
+                      <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar12" onclick="changeAvatar(event)" src="../img/avatar/avatar_minnie.png"
+                        class="logo_avatar rounded-circle" /></a>
+
+              </li>
+            </ul>
+          </div>
+          <a class="navbar-brand" href="#">Admin</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse deconec" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="PageAcceuilConnec.html">Déconnexion</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+
+
+    <!--fin div haut-->
+
+  </header>
+
+  <!--//////////////////////////MAIN////////////////////////-->
+  <main>
+
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+
+    <section class="hero-section">
+      <div class="card-grid">
+        <a class="card" href="#">
+          <div class="card__background" style="background-image: url(../img/pascal_robe.jpg)"></div>
+          <div class="card__content">
+            <h3 class="card__heading">Gestion du profil</h3>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="card__background" style="background-image: url(../img/genie_aladdin.jpg)"></div>
+          <div class="card__content">
+            <h3 class="card__heading">Gestion des comptes</h3>
+          </div>
+        </a>
+        <a class="card" href="#">
+          <div class="card__background" style="background-image: url(../img/magie_disney.jpg)"></div>
+          <div class="card__content">
+            <h3 class="card__heading">Gestion des parties</h3>
+          </div>
+          </li>
+          <a class="card" href="#">
+            <div class="card__background" style="background-image: url(../img/lampe_magique_aladdin.jpg)"></div>
+            <div class="card__content">
+              <h3 class="card__heading">Gestion de la boutique</h3>
+            </div>
+          </a>
+          <div>
+    </section>
+
+
+  </main>
+
+  <!--//////////////////////////ASIDE////////////////////////-->
+  <aside class="">
+
+  </aside>
+
+
+  <!--//////////////////////////FOOTER////////////////////////-->
+  <footer></footer>
+
+</body>
+
+
+
+<script>
+
+  function changeAvatar(event) {
+    var urlLogoAdmin = $("#avatarAdmin").attr("src");
+    $("#avatarAdmin").attr("src", event.srcElement.currentSrc);
+  }
+
+
+</script>
+
+
+
+</html>
