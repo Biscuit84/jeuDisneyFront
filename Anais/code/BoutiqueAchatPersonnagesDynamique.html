@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+
+
+<head>
+    <meta charset="UTF-8" />
+
+    <title>Liste des personnages boutique</title>
+    <link rel="icon" type="image/png" href="">
+
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+
+    <!-- lien vers faIcon all.css  -->
+    <link rel="stylesheet" href="./asset/fontawesome-5.15.4/css/all.css" />
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <!-- googlefont -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+
+
+    <!-- lien vers css -->
+    <link rel="stylesheet" href="ListePerso2.css" />
+
+    <meta name="description" content="Jeu plateau sur le thème Disney">
+    <meta name="keywords" content="disney,game,jeu">
+
+
+</head>
+
+<body>
+
+    <!-- <div class="background"> -->
+    <div id="bloc_page">
+        <header>
+
+            <!--div haut-->
+            <div class="haut">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+
+                    <div class="container-fluid">
+
+                        <!-- mettre le logo à gauche de la navbar -->
+                        <a class="navbar-brand" href="#">Joueur</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+                        <!-- avatars -->
+                        <div class="dropdown dropdown-pull-right btn-group">
+                            <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="../img/avatar/avatar_mickey.png" class="logo_admin rounded-circle" id="avatarAdmin" />
+              </button>
+
+                            <ul class="dropdown-menu" id="avatars">
+                                <li class="d-flex flex-row mb-3">
+                                    <a class="dropdown-item choixAvatar" href="#"><img id="avatar1" onclick="changeAvatar(event)" src="../img/avatar/avatar_elsa.png" class="logo_avatar rounded-circle" /></a>
+                                    <a class="dropdown-item choixAvatar" id="avatarMulan" href="#"><img id="avatar2" onclick="changeAvatar(event)" src="../img/avatar/avatar_ariel.jpg" class="logo_avatar rounded-circle" /></a>
+                                    <a class="dropdown-item choixAvatar" id="avatarAurore" href="#"><img id="avatar3" onclick="changeAvatar(event)" src="../img/avatar/avatar_aurore.jpg" class="logo_avatar rounded-circle" /></a>
+                                </li>
+                                <li class="d-flex flex-row mb-3">
+                                    <a class="dropdown-item choixAvatar" id="avatarJasmine" href="#"><img id="avatar5" onclick="changeAvatar(event)" src="../img/avatar/avatar_belle.jpg" class="logo_avatar rounded-circle" /></a>
+                                    <a class="dropdown-item choixAvatar" id="avatarRaiponce" href="#"><img id="avatar6" onclick="changeAvatar(event)" src="../img/avatar/avatar_blanche_neige.jpg" class="logo_avatar rounded-circle" /></a>
+                                    <a class="dropdown-item choixAvatar" id="avatarCendrillon" href="#"><img id="avatar4" onclick="changeAvatar(event)" src="../img/avatar/avatar_cendrillon.jpg" class="logo_avatar rounded-circle" /></a>
+                                </li>
+                                <li class="d-flex flex-row mb-3">
+                                    <a class="dropdown-item choixAvatar" id="avatarBlancheNeige" href="#"><img id="avatar7" onclick="changeAvatar(event)" src="../img/avatar/avatar_jasmine.jpg" class="logo_avatar rounded-circle" /></a>
+                                    <a class="dropdown-item choixAvatar" id="avatarBelle" href="#"><img id="avatar8" onclick="changeAvatar(event)" src="../img/avatar/avatar_mulan.jpg" class="logo_avatar rounded-circle" /></a>
+                                    <a class="dropdown-item choixAvatar" id="avatarAriel" href="#"><img id="avatar9" onclick="changeAvatar(event)" onclick="changeAvatar(event)" src="../img/avatar/avatar_raiponce.jpg" class="logo_avatar rounded-circle" /></a>
+                                </li>
+                                <li class="d-flex flex-row mb-3">
+                                    <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar10" onclick="changeAvatar(event)" src="../img/avatar/avatar_tiana.jpg" class="logo_avatar rounded-circle" /></a>
+                                    <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar11" onclick="changeAvatar(event)" src="../img/avatar/avatar_mickey.png" class="logo_avatar rounded-circle" /></a>
+                                    <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar12" onclick="changeAvatar(event)" src="../img/avatar/avatar_minnie.png" class="logo_avatar rounded-circle" /></a>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="PageAcceuilConnec.html">Gestion du Profil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="PageAcceuilConnec.html">Déconnexion</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </nav>
+            </div>
+
+
+        </header>
+
+    </div>
+    <!-- background anime -->
+    <div class="area">
+
+        <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+
+
+        <br>
+        <br>
+
+
+
+
+
+
+        <main class="container">
+
+            <!-- Button trigger modal -->
+
+
+            <!-- Modal Valider Panier -->
+            <div class="modal fade" id="validerPanierModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Validation de la commande</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>Etes-vous sur de vouloir valider le panier?</h6>
+                            <p>Récapitulatif de la commande:</p>
+                            <ul id="recapCommande"></ul>
+                            <br>
+                            <h6>Total de la commande:</h6>
+                            <p class="montantTotalPanier"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Valider le panier</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Vider Panier -->
+            <div class="modal fade" id="viderPanierModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Vider le panier</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>Etes-vous sur de vouloir vider le panier?</h6>
+                            <p id="recapCommande"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="viderPanier()">Oui</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- bouton panier -->
+            <div class="btn-group" id="boutonPanier">
+                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="panier" src="asset/img/icones/buy_icon.png" /><span class="badge badge-primary badge-pill"
+            id="nombreElementsDansPanier">0</span>
+        </button>
+                <ul class="dropdown-menu" id="listePanier" onclick="event.stopPropagation()">
+                    <div id="listePersosPanier">
+                        <!-- construit par la methode afficherListePersoPanier -->
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <li>Total de la commande: <span class="montantTotalPanier"></span></li>
+                    <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validerPanierModal1" onclick="afficheRecapCommande()">
+            Valider le panier
+          </button></li>
+                    <!-- Modal -->
+                    <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viderPanierModal2" id="viderPanier">Vider le
+              panier</button></li>
+                </ul>
+            </div>
+
+
+            <h1 class="titrePage">
+                Les personnages disponibles
+            </h1>
+            <br>
+            <br>
+
+            <!-- Portfolios -->
+            <div id="portfolioCollapse">
+                <!-- CREATION DYNAMIQUE DES PORTFOLIO ICI -->
+            </div>
+        </main>
+
+    </div>
+</body>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+    //liste totale des personnages
+    var listePersonnages = [{
+        "id": "PersoElsa",
+        "prenom": "Elsa",
+        "pouvoir": "Glace",
+        "prix": 100,
+        "pouvoirLibelle": "Pouvoir de la glace",
+        "pouvoirImg": "asset/img/icones/flocon_icon.png",
+        "pouvoirDescription": "Grâce à l'aide de Marraine la Bonne Fée et de sa baguette magique, Cendrillon peut prendre un carrosse et avancer d'une case supplémentaire. Pouvoir activable trois fois par partie.",
+        "img": "asset/img/elsa.jpg"
+    }, {
+        "id": "PersoJasmine",
+        "prenom": "Jasmine",
+        "pouvoir": "Tigre",
+        "prix": 100,
+        "pouvoirLibelle": "Pouvoir du Tigre",
+        "pouvoirImg": "asset/img/icones/magic-wand.png",
+        "pouvoirDescription": "Grâce à Rajah, Jasmine peut effrayer ses ennemis pour les tenir à distance. Fait reculer tous les ennemis d'une case. Pouvoir activable une fois par partie.",
+        "img": "asset/img/jasmine.jpg"
+    }, {
+        "id": "PersoMulan",
+        "prenom": "Mulan",
+        "pouvoir": "Dragon",
+        "prix": 100,
+        "pouvoirLibelle": "Pouvoir du Dragon",
+        "pouvoirImg": "asset/img/icones/dragon_icon.png",
+        "pouvoirDescription": "Grâce à l'aide des dragons, Mulan peut enfermer deux ennemis dans un cercle de feu pendant 1 tour. Ils passent leur prochain tour. Pouvoir activable une seule fois par partie.",
+        "img": "asset/img/mulan.jpg"
+    }, {
+        "id": "PersoCendrillon",
+        "prenom": "Cendrillon",
+        "pouvoir": "Baguette Magique",
+        "prix": 100,
+        "pouvoirLibelle": "Baguette Magique",
+        "pouvoirImg": "asset/img/icones/magic-wand.png",
+        "pouvoirDescription": "Grâce à l'aide de Marraine la Bonne Fée et de sa baguette magique, Cendrillon peut prendre un carrosse et avancer d'une case supplémentaire. Pouvoir activable trois fois par partie.",
+        "img": "asset/img/Cendrillon.jpg"
+    }, {
+        "id": "PersoAriel",
+        "prenom": "Ariel",
+        "pouvoir": "Eau",
+        "prix": 100,
+        "pouvoirLibelle": "Pouvoir de l'Eau",
+        "pouvoirImg": "asset/img/icones/wave-icon.png",
+        "pouvoirDescription": "Ariel peut faire appel à son pouvoir de l'eau pour surfer sur les vagues et avancer de 3 cases. Pouvoir activable une seule fois par partie.",
+        "img": "asset/img/arel.jpg"
+    }, {
+        "id": "PersoRaiponce",
+        "prenom": "Raiponce",
+        "pouvoir": "Chevelure",
+        "prix": 100,
+        "pouvoirLibelle": "Pouvoir de la Chevelure",
+        "pouvoirImg": "asset/img/icones/raiponce_icon.png",
+        "pouvoirDescription": "Grâce à sa chevelure magique, Raiponce peut choisir de sauter au dessus d'une case pour éviter les pièges. Pouvoir activable 3 fois par partie.",
+        "img": "asset/img/raiponce.jpg"
+    }, {
+        "id": "PersoBelle",
+        "prenom": "Belle",
+        "pouvoir": "Aide de la Bête",
+        "prix": 100,
+        "pouvoirLibelle": "Aide de la Bête",
+        "pouvoirImg": "asset/img/icones/laBete_icon.png",
+        "pouvoirDescription": "Belle peut faire appel à son ami la Bête pour effrayer un ennemi et le faire reculer de 3 cases. Pouvoir activable une seule fois par partie.",
+        "img": "asset/img/bellejpg.jpg"
+    }, {
+        "id": "PersoTiana",
+        "prenom": "Tiana",
+        "pouvoir": "Grenouille",
+        "prix": 100,
+        "pouvoirLibelle": "Pouvoir des Grenouilles",
+        "pouvoirImg": "asset/img/icones/frog_icon.png",
+        "pouvoirDescription": "Tiana peut transformer un ennemi en grenouille. Celui-ci est désorienté et recule d'une case. Pouvoir activable trois fois par partie.",
+        "img": "asset/img/tiana.jpg"
+    }, {
+        "id": "PersoAurore",
+        "prenom": "Aurore",
+        "pouvoir": "Sommeil",
+        "prix": 100,
+        "pouvoirLibelle": "Pouvoir du sommeil",
+        "pouvoirImg": "asset/img/icones//sleep_icon.png",
+        "pouvoirDescription": "Aurore peut endormir un ennemi qui passe son prochain tour. Pouvoir activable deux fois par partie.",
+        "img": "asset/img/aurore.jpg"
+    }, {
+        "id": "PersoBlanche-Neige",
+        "prenom": "Blanche-Neige",
+        "pouvoir": "Animaux",
+        "prix": 100,
+        "pouvoirLibelle": "Pouvoir des Animaux",
+        "pouvoirImg": "asset/img/icones/squirrel_icon.png",
+        "pouvoirDescription": "Avec l'aide de ses amis de la fôret, Blanche-neige peut se déplacer d'une case de plus . Le pouvoir peut être activé 3 fois par partie.",
+        "img": "asset/img/blanche-neige.jpg"
+    }];
+
+    //liste des personnages dans le panier
+    var listePersonnagesPanier = [];
+    //
+    var li;
+    var liRecap;
+    //nombre d'elements dans le panier
+    var nombreElementsDansPanier = 0;
+    // somme de la commande en etoile:
+    var prixTotalPanier = Number('');
+
+
+    constructPorfolio();
+
+
+
+    //changer l'avatar d'un joueur sur cette page
+    //TO DO: faire en sorte de pouvoir le changer sur toutes les autres pages de manière dynamique!
+    function changeAvatar(event) {
+        var urlLogoAdmin = $("#avatarAdmin").attr("src");
+        $("#avatarAdmin").attr("src", event.srcElement.currentSrc);
+    }
+
+
+    //ajouter un perso au pannier:
+    function ajouterAuPanier(event) {
+        for (p of listePersonnages) {
+            prenom = p.prenom;
+            prix = p.prix;
+            if (event == p.id) {
+                listePersonnagesPanier.push({
+                    prenom,
+                    prix
+                });
+                nombreElementsDansPanier++;
+                $("#nombreElementsDansPanier").text(nombreElementsDansPanier);
+            }
+        }
+        afficherListePanier();
+        afficherListePersoPanier();
+        montantDuPanier();
+        $("#" + event).prop('disabled', true);
+    }
+
+
+    // somme des achats en etoile: 
+    function montantDuPanier() {
+        prixTotalPanier = Number('');
+        for (p of listePersonnagesPanier) {
+            console.log(p.prix);
+            prixTotalPanier = (prixTotalPanier + p.prix);
+
+        }
+
+        $(".montantTotalPanier").html(prixTotalPanier + '<i class="fas fa-star etoile"></i>');
+    }
+
+
+    // afficher la liste des personnages dans le panier en rajoutant une balise <li> dans le html 
+    function afficherListePersoPanier() {
+        li = "";
+        listePersonnagesPanier.forEach(function(pp) {
+            console.log("pp : ", pp);
+            li += '<li class="itemAchatPerso" >' + pp.prenom + ': ' + pp.prix + ' <i class="fas fa-star etoile"></i> <button type="button" class="btn " onclick="removePerso(id)" id="' + pp.prenom + '"> <i class="far fa-trash-alt poubelle"></i> </button> </li>';
+        });
+
+        document.getElementById("listePersosPanier").innerHTML = li;
+    }
+
+    //supprimer un perso du panier
+    function removePerso(event) {
+
+        for (var i = 0; i < listePersonnagesPanier.length; i++) {
+            if (event == listePersonnagesPanier[i].prenom) {
+                listePersonnagesPanier.splice(i, 1);
+                nombreElementsDansPanier--;
+                $("#nombreElementsDansPanier").text(nombreElementsDansPanier);
+                $("#Perso" + event).prop('disabled', false);
+            }
+        }
+        afficherListePanier();
+        afficherListePersoPanier();
+        montantDuPanier();
+    }
+
+    //Afficher le bouton Panier seulement si on achète des choses
+    function afficherListePanier() {
+        if (listePersonnagesPanier.length > 0) {
+            $("#listePanier").css("visibility", "visible");
+        } else {
+            $("#listePanier").css("visibility", "hidden");
+        }
+
+
+
+    }
+
+    function validerPanier() {
+
+    }
+
+    function viderPanier() {
+        listePersonnagesPanier = [];
+        afficherListePanier();
+        afficherListePersoPanier();
+        montantDuPanier();
+        nombreElementsDansPanier = 0;
+        $("#nombreElementsDansPanier").text(nombreElementsDansPanier);
+
+        for (p of listePersonnages) {
+            $("#Perso" + p.prenom).prop('disabled', false);
+        }
+
+    }
+
+    // affiche le recap de la commande dans la modal Valider la commande :
+    function afficheRecapCommande() {
+        liRecap = "";
+        listePersonnagesPanier.forEach(function(pp) {
+            liRecap += '<li class="itemAchatPerso" >' + pp.prenom + ': ' + pp.prix + ' <i class="fas fa-star etoile"></i> </li>';
+        });
+
+        document.getElementById("recapCommande").innerHTML = liRecap;
+        montantDuPanier();
+    }
+
+
+    function constructPorfolio() {
+        portolio = "";
+        nb = Number("0");
+        //pour chaque perso dans la liste je creer le portfolio associé
+        listePersonnages.forEach(function(perso) {
+            //si on est modulo 3 et que l'on ne vient pas juste de rajouter un ligne
+            if (nb % 3 == 0 && nb !== 0) {
+                // je ferme ma balise row
+                portolio += '</div>';
+                portolio += '<br/>';
+            }
+            //on met 3 perso par ligne
+            if (nb % 3 == 0) {
+                portolio += '<div class="row">';
+            }
+            portolio += '<div class="media achat col">';
+            portolio += '<img class="mr-3 portfolio rounded-circle" src="' + perso.img + '" alt="' + perso.prenom + '" data-bs-toggle="collapse" data-bs-target="#collapse' + perso.id + '" aria-expanded="false" aria-controls="collapseWidthExample">'
+            portolio += '<div class="media-body collapse collapse-horizontal mr-200" style="min-height: 180px;" id="collapse' + perso.id + '" data-bs-parent="#portfolioCollapse">';
+            portolio += '<div class="card card-body detail" style="width: 30rem;">';
+            portolio += '<h2 class="nomPerso">' + perso.prenom + '</h2>';
+            portolio += '<p class="contenuPouvoir" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample" data-bs-target="#collapseChild' + perso.id + '">' + perso.pouvoirLibelle + '&nbsp; <img class="iconePouvoir" src="' + perso.pouvoirImg + '" /></p>';
+            portolio += '<div class="collapse" id="collapseChild' + perso.id + '">';
+            portolio += '<div class="card card-body descriptionPouvoir">'
+            portolio += perso.pouvoirDescription;
+            portolio += '</div>';
+            portolio += '</div>';
+            portolio += '<p class="prix">' + perso.prix + '&nbsp;<i class="fas fa-star etoile"></i></p>';
+            portolio += '<div class="divBouton">';
+            portolio += '<button type="button" class="btn btn-info btn-sm bouton" id="' + perso.id + '" onclick="ajouterAuPanier(id)"><i class="fas fa-cart-plus" style="color: white"></i> Acheter</button>';
+            portolio += '</div>';
+            portolio += '</div>';
+            portolio += '</div>';
+            // fin de la div media achat col
+            portolio += '</div>'
+            nb++;
+            // si je suis sur mon dernier perso, je close ma balise row
+            if (nb == listePersonnages.length) {
+                // je ferme ma balise row
+                portolio += '</div>';
+            }
+        });
+        document.getElementById("portfolioCollapse").innerHTML = portolio;
+
+    }
+</script>
+
+</html>
