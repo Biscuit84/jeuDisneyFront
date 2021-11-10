@@ -12,6 +12,10 @@
   // nombre de case du plateau
   format=nbcaseDemande();
   var nbcasePlateau = format[0];;
+  var nombreDe = 0 ;
+  nombreDe=nbDeDemande();
+
+
 
   // taille des cases
   var nBcaseW = format[1];
@@ -35,6 +39,8 @@
   var futurPositionYPlayer = 0;
   var positionIndexCasePlayer = 0;      //à quel index de la liste de Cases se trouve le joueur:
   var futurePositionIndexCasePlayer = 0;
+
+  var playerIsMoving = false;
 
  // affiche des cases du plateua :
   console.log("listeCases : ", listeCases);
@@ -78,9 +84,26 @@ function taillePlateau(nbcase){
     return  format;
 }
 
+function nbDeDemande(){
+  var nombreDe =0;
+  while (nombreDe<1 || nombreDe>2)
+  {
+      nombreDe = prompt("nombre de dé (1 ou 2)?");
+  }
+
+  return nombreDe;
+}
+
+function cacherLeDe2()
+{
+  aff2=document.getElementById("afficheDe2");
+  aff2.style.display = "none";
+    //document.getElementById("De2").style.visibility = "hidden";
+}
 
 function Render() {
   //backgroundImage.src = "../img/background_lvl1 - Copie.png";
+
   backgroundPlayer.src = "../img/milkandmocha.jpg";
   background = document.getElementById("background");
   ctxBackground = background.getContext("2d");
@@ -97,6 +120,12 @@ function drawAll() {
   drawPlateau();
   setInterval(drawPlayer, 10);
   //drawPlayer();
+  if (nombreDe==1){
+
+//cacherLeDe2();
+  }
+  else if (nombreDe==2) {
+  }
 }
 
 // dessine le fond d'ecran
@@ -206,6 +235,7 @@ function drawPlayer() {
   {
     if (diff<0)
     {
+      playerIsMoving = true;
       if (listeCases[positionIndexCasePlayer].positionCaseY < listeCases[positionIndexCasePlayerSuivante].positionCaseY)
         {      // avancer case par case
         positionYPlayer += velocity;
@@ -226,6 +256,7 @@ function drawPlayer() {
     }
     else if (diff>0)
     {
+      playerIsMoving = true;
       if (listeCases[positionIndexCasePlayer].positionCaseY < listeCases[positionIndexCasePlayerPrecedente].positionCaseY)
         {      // avancer case par case
         positionYPlayer += velocity;
@@ -245,30 +276,20 @@ function drawPlayer() {
     }
   }
 
+  //bouton accessible une fois que le joueur arrête de bouger
+
+     if(diff == 0 && playerIsMoving){
+       console.log("le pion est à l'arret")
+       disabledButtonFalse();
+       playerIsMoving = false;
+     }
+
+
   // redessiner le player pour le refresh
   ctxPlayer.drawImage(backgroundPlayer, positionXPlayer, positionYPlayer, taillecaseW, taillecaseH);
 
 
-  // empecher d'appuyer sur les boutons si c'est pas fini :
-  // TODO: trouver une solution
 
-  if (diff!=0) // on est en train de déplacer le pion ! ne pas appuyer sur les boutons
-  {
-  //  $("#" + event).prop('disabled', true);
-    //var boutonss = document.getElementById('btn btn-primary bouton')
-  //var boutonss= document.getElementByClass("btn btn-primary bouton");
-    //$("btn btn-primary bouton" + event).prop('disabled', true);
-//  boutonss.prop('disabled', true)
-  //boutonss.display=none;
-
-  }
-  else { // le pion est stable, on peut appuyer sur les boutons
-    //$("btn btn-primary bouton" + event).prop('disabled', false);
-  //  var boutonss = document.getElementById('btn btn-primary bouton')
-    //  boutonss.prop('disabled', false);
-  //var boutonss= document.getElementByClass("btn btn-primary bouton");
-  //boutonss.display;
-  }
 
 }
 
@@ -283,6 +304,17 @@ function positionActuelleJoueur(){
 
 
 // fonction des boutons :
+
+//boutons avancer et reculer disabled
+function disabledButtonTrue () {
+  $(".bouton").prop('disabled', true);
+}
+//boutons avancer et reculer abled
+function disabledButtonFalse () {
+  $(".bouton").prop('disabled', false);
+}
+
+
 function DiceAvance() {
   playSoundDice();
   roulementDe();
@@ -294,12 +326,12 @@ function DiceRecule(){
   setTimeout(Recule, 2200);
 }
 
-function DiceValue() {
+function DiceValue(idDe) {
 var lanceDe = Math.floor(Math.random() * 6) + 1;
   //var monDeAvance = document.getElementById("affichageDe");
   //monDeAvance.innerHTML = lanceDe;
-var imageachanger=document.getElementById('imageDe');
-
+//var imageachanger=document.getElementById('imageDe');
+var imageachanger=document.getElementById(idDe);
 switch (lanceDe) {
   case 1:
   imageachanger.setAttribute("src", "../img/de1.png");
@@ -325,13 +357,16 @@ switch (lanceDe) {
 }
 
 function roulementDe(){
-  setTimeout(DiceValue, 400);
-  setTimeout(DiceValue, 600);
-  setTimeout(DiceValue, 700);
-  setTimeout(DiceValue, 750);
-  setTimeout(DiceValue, 900);
-  setTimeout(DiceValue, 1200);
-  setTimeout(DiceValue, 1700);
+ disabledButtonTrue ();
+  var idDe = "imageDe";
+  setTimeout(DiceValue(idDe), 400);
+  setTimeout(DiceValue(idDe), 600);
+  setTimeout(DiceValue(idDe), 700);
+  setTimeout(DiceValue(idDe), 750);
+  setTimeout(DiceValue(idDe), 900);
+  setTimeout(DiceValue(idDe), 1200);
+  setTimeout(DiceValue(idDe), 1700);
+
 }
 
 function sleep(milliseconds) {
@@ -351,15 +386,24 @@ function Avance() {
   var tourActuel = document.getElementById("NbTour");
   tourActuel.innerHTML = Tour;
 
-  //random de 1 à 6s
-  var lanceDe = DiceValue();
-
   // Affiche la valeur du dé dans le html
   var monDeAvance = document.getElementById("valeurDeAvance");
-  monDeAvance.innerHTML = lanceDe;
+
+  var totalDe = 0;
+
+    //random de 1 à 6s
+  var lanceDe = DiceValue("imageDe");
+  if (nombreDe==1){
+   totalDe=lanceDe;
+  }
+  else if (nombreDe==2) {
+  var lanceDe2 = DiceValue("imageDe2");
+  totalDe =lanceDe+lanceDe2;
+  }
+  monDeAvance.innerHTML = totalDe;
 
   //calcule le nouvel index:
-  var nouvelIndex = Number(positionIndexCasePlayer) + Number(lanceDe);
+  var nouvelIndex = Number(positionIndexCasePlayer) + Number(totalDe);
 
   // gere le cas où on dépasse la case arrivee
   if (nouvelIndex > listeCases.length - 1) {
@@ -374,13 +418,22 @@ function Avance() {
 
 function Recule() {
 
-  var lanceDe = DiceValue();
   // Affiche la valeur du dé dans le html
   var monDeRecule = document.getElementById("valeurDeRecule");
-  monDeRecule.innerHTML = lanceDe;
+
+ var totalDe = 0;
+  var lanceDe = DiceValue("imageDe");
+  if (nombreDe==1){
+   totalDe=lanceDe;
+  }
+  else if (nombreDe==2) {
+  var lanceDe2 = DiceValue("imageDe2");
+  totalDe =lanceDe+lanceDe2;
+  }
+  monDeRecule.innerHTML = totalDe;
 
   //calcule le nouvel index:
-  var nouvelIndex = Number(positionIndexCasePlayer) - Number(lanceDe);
+  var nouvelIndex = Number(positionIndexCasePlayer) - Number(totalDe);
   // gere le cas où on dépasse la case depart
   if (nouvelIndex < 0) {
     nouvelIndex = 0;
@@ -397,7 +450,7 @@ function Recule() {
 // son
 function playSoundDice() {
   document.getElementById("diceThrowAudio").setAttribute('src', '../sound/diceThrow.mp3');
-	   document.getElementById("diceThrowAudio").play();
+	document.getElementById("diceThrowAudio").play();
 }
 
 

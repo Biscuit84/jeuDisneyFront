@@ -1,13 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Devonshire&display=swap");
+/* **********************************************plateau jeu***************************************************************** */
+
+
 #jeu{
-  flex-grow: 8;
   border: solid grey 2px;
   border-radius: 5px;
   display: flex;
-  flex-direction: row;
   justify-content: space-around;
-  flex-wrap: wrap;
   width: 65%;
   height: 100%;
+}
+
+#mycanvas {
+  width: 100%;
+  object-fit: contain;
+}
+
+
+#ecranDeJeu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #dbbadbc4;
+  height: 100%;
+}
+
+
+#tableauDeControl {
+  flex-wrap: wrap;
+  width: 20%;
+}
+
+/* **********************************************game control***************************************************************** */
+
+.Tour{
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Devonshire', cursive;
+  z-index: 1;
 }
 
 .gameControl {
@@ -17,7 +47,19 @@
   justify-content: space-around;
   height: 70%;
   width: 100%;
-  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+
+.bouton {
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  height: 50px;
+  width: 110px;
+  font-family:  cursive;
 }
 
 .dice{
@@ -28,6 +70,7 @@
   border-radius: 5px;
   display: flex;
 }
+/* **********************************************sound control***************************************************************** */
 
 .soundControl {
   border: solid grey 2px;
@@ -36,18 +79,8 @@
   justify-content: space-around;
   height: 30%;
   width: 100%;
-  flex-direction: row;
 }
 
-.Tour{
-  font-size: 50px;
-  text-align: center;
-}
-
-#mycanvas {
-  width: 100%;
-  object-fit: contain;
-}
 
 .volume-slider-con{
   height:10px;
@@ -63,22 +96,4 @@
    background-color:red;
    justify-content: center;
    align-content: center;
-}
-
-  .bouton {
-    align-self: center;
-  }
-
-
-#ecranDeJeu {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  background-color: #dbbadbc4;
-  height: 100%;
-}
-
-#tableauDeControl {
-  flex-wrap: wrap;
-  width: 20%;
 }
