@@ -1,0 +1,84 @@
+#jeu{
+  flex-grow: 8;
+  border: solid grey 2px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 65%;
+  height: 100%;
+}
+
+.gameControl {
+  border: solid grey 2px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  height: 70%;
+  width: 100%;
+  flex-direction: row;
+}
+
+.dice{
+  height: 110px;
+  width: 110px;
+  background-color:white;
+  border: solid grey 2px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.soundControl {
+  border: solid grey 2px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  height: 30%;
+  width: 100%;
+  flex-direction: row;
+}
+
+.Tour{
+  font-size: 50px;
+  text-align: center;
+}
+
+#mycanvas {
+  width: 100%;
+  object-fit: contain;
+}
+
+.volume-slider-con{
+  height:10px;
+  width:20%;
+  background-color:#ddd;
+  justify-content: center;
+  align-content: center;
+}
+
+.volume-slider{
+   height:100%;
+   width:100%;
+   background-color:red;
+   justify-content: center;
+   align-content: center;
+}
+
+  .bouton {
+    align-self: center;
+  }
+
+
+#ecranDeJeu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #dbbadbc4;
+  height: 100%;
+}
+
+#tableauDeControl {
+  flex-wrap: wrap;
+  width: 20%;
+}
