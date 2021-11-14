@@ -21,6 +21,15 @@
   z-index: 3;
 }
 
+/* logo du jeu */
+.logo_menu {
+  width: 5em;
+  height: 4em;
+  filter: drop-shadow(-10px 1px 4px Grey);
+  transform: rotate(-10deg);
+}
+
+/* avatar du joueur */
 .logo_admin {
   width: 5em;
   height: 4em;
@@ -304,6 +313,6 @@ button{
 }
 
 
-#checkIcon{
+/* #checkIcon{
   color: green;
-}
+} */

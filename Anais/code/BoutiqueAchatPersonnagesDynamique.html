@@ -46,7 +46,9 @@
 
 
                     <div class="container-fluid">
-          
+          <!-- logo jeu  -->
+          <div id="logo">
+            <img src="../img/logoPrincessA.png" class="logo_menu" /></div>
 
           
                        <!-- Nombre d'etoiles joueur -->
@@ -260,32 +262,8 @@
                 </div>
             </div>
 
-            <!-- Toast Confirmation Achat Panier -->
 
-            <div id="validate" style="z-index:11;"></div>
-
-            <!-- bouton panier
-            <div class="btn-group" id="boutonPanier">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <img class="panier" src="asset/img/icones/buy_icon.png" /><span class="badge badge-primary badge-pill"
-            id="nombreElementsDansPanier">0</span>
-        </button>
-                <ul class="dropdown-menu" id="listePanier" onclick="event.stopPropagation()">
-                    <div id="listePersosPanier">
-                        construit par la methode afficherListePersoPanier -->
-                    <!-- </div>
-                    <div class="dropdown-divider"></div>
-                    <li>Total de la commande: <span class="montantTotalPanier"></span></li>
-                    <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validerPanierModal1" onclick="afficheRecapCommande()">
-            Valider le panier
-          </button></li>
-                     Modal -->
-                    <!-- <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viderPanierModal2" id="viderPanier">Vider le
-              panier</button></li>
-                </ul>
-            </div> -->  
-
-
+            <!-- Titre page -->
             <h1 class="titrePage">
                 Les personnages disponibles
             </h1>
@@ -430,7 +408,7 @@
 
 
     //changer l'avatar d'un joueur sur cette page
-    //TO DO: faire en sorte de pouvoir le changer sur toutes les autres pages de manière dynamique!
+    //TODO: faire en sorte de pouvoir le changer sur toutes les autres pages de manière dynamique!
     function changeAvatar(event) {
         var urlLogoAdmin = $("#avatarAdmin").attr("src");
         $("#avatarAdmin").attr("src", event.srcElement.currentSrc);
@@ -529,9 +507,9 @@
         });
         }
         else{
-        $("#exampleModalToggleLabel2").html('<span id="checkIconRed"><i class="fas fa-times-circle style="color: red"></i></span>Annulation de l achat');
+        $("#exampleModalToggleLabel2").html('<span id="checkIconRed"><i class="fas fa-times-circle style="color: red"></i></span>Annulation de l\'achat');
         $("#checkIconRed").css("color", "red");
-        $("#messageAchatPanier").html('<p>Vous n avez pas assez d etoiles pour acheter tous les elements du panier.</p>')
+        $("#messageAchatPanier").html('<p>Vous n\'avez pas assez d\'étoiles pour acheter tous les elements du panier.</p>')
         }
         
 
