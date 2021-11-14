@@ -46,53 +46,123 @@
 
 
                     <div class="container-fluid">
+          
 
-                        <!-- mettre le logo à gauche de la navbar -->
-                        <a class="navbar-brand" href="#">Joueur</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+          
+                       <!-- Nombre d'etoiles joueur -->
+                       <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav">
+                          <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#">Niveau</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Nombre de victoire</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" id="nombreEtoilesJoueur" href="#">Nombre d'étoiles</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Boutique</a>
+                          </li>
+
+                        </ul>
+                      </div>
 
 
-                        <!-- avatars -->
-                        <div class="dropdown dropdown-pull-right btn-group">
-                            <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img src="../img/avatar/avatar_mickey.png" class="logo_admin rounded-circle" id="avatarAdmin" />
-              </button>
-
-                            <ul class="dropdown-menu" id="avatars">
-                                <li class="d-flex flex-row mb-3">
-                                    <a class="dropdown-item choixAvatar" href="#"><img id="avatar1" onclick="changeAvatar(event)" src="../img/avatar/avatar_elsa.png" class="logo_avatar rounded-circle" /></a>
-                                    <a class="dropdown-item choixAvatar" id="avatarMulan" href="#"><img id="avatar2" onclick="changeAvatar(event)" src="../img/avatar/avatar_ariel.jpg" class="logo_avatar rounded-circle" /></a>
-                                    <a class="dropdown-item choixAvatar" id="avatarAurore" href="#"><img id="avatar3" onclick="changeAvatar(event)" src="../img/avatar/avatar_aurore.jpg" class="logo_avatar rounded-circle" /></a>
-                                </li>
-                                <li class="d-flex flex-row mb-3">
-                                    <a class="dropdown-item choixAvatar" id="avatarJasmine" href="#"><img id="avatar5" onclick="changeAvatar(event)" src="../img/avatar/avatar_belle.jpg" class="logo_avatar rounded-circle" /></a>
-                                    <a class="dropdown-item choixAvatar" id="avatarRaiponce" href="#"><img id="avatar6" onclick="changeAvatar(event)" src="../img/avatar/avatar_blanche_neige.jpg" class="logo_avatar rounded-circle" /></a>
-                                    <a class="dropdown-item choixAvatar" id="avatarCendrillon" href="#"><img id="avatar4" onclick="changeAvatar(event)" src="../img/avatar/avatar_cendrillon.jpg" class="logo_avatar rounded-circle" /></a>
-                                </li>
-                                <li class="d-flex flex-row mb-3">
-                                    <a class="dropdown-item choixAvatar" id="avatarBlancheNeige" href="#"><img id="avatar7" onclick="changeAvatar(event)" src="../img/avatar/avatar_jasmine.jpg" class="logo_avatar rounded-circle" /></a>
-                                    <a class="dropdown-item choixAvatar" id="avatarBelle" href="#"><img id="avatar8" onclick="changeAvatar(event)" src="../img/avatar/avatar_mulan.jpg" class="logo_avatar rounded-circle" /></a>
-                                    <a class="dropdown-item choixAvatar" id="avatarAriel" href="#"><img id="avatar9" onclick="changeAvatar(event)" onclick="changeAvatar(event)" src="../img/avatar/avatar_raiponce.jpg" class="logo_avatar rounded-circle" /></a>
-                                </li>
-                                <li class="d-flex flex-row mb-3">
-                                    <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar10" onclick="changeAvatar(event)" src="../img/avatar/avatar_tiana.jpg" class="logo_avatar rounded-circle" /></a>
-                                    <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar11" onclick="changeAvatar(event)" src="../img/avatar/avatar_mickey.png" class="logo_avatar rounded-circle" /></a>
-                                    <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar12" onclick="changeAvatar(event)" src="../img/avatar/avatar_minnie.png" class="logo_avatar rounded-circle" /></a>
-
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="PageAcceuilConnec.html">Gestion du Profil</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="PageAcceuilConnec.html">Déconnexion</a>
-                                </li>
-                            </ul>
-                        </div>
-
+                           <!-- bouton panier -->
+                <div class="btn-group dropdown dropdown-pull-right" id="boutonPanier">
+                  <button type="button" class="btn bg-transparent dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="fas fa-shopping-cart fa-2x panier"></i><span class="badge badge-primary badge-pill"
+                      id="nombreElementsDansPanier">0</span>
+                  </button>
+                  <ul class="dropdown-menu" id="listePanier" onclick="event.stopPropagation()">
+                    <div id="listePersosPanier">
+                      <!-- construit par la methode afficherListePersoPanier -->
                     </div>
-                </nav>
+                    <div class="dropdown-divider"></div>
+                    <li>Total de la commande: <span class="montantTotalPanier"></span></li>
+                    <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validerPanierModal1" onclick="afficheRecapCommande()">
+                      Valider le panier
+                    </button></li>
+                    <!-- Modal -->
+                    <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viderPanierModal2" id="viderPanier" >Vider le
+                        panier</button></li>
+                      </ul>
+                      </div>
+          
+          
+                      <!-- avatars -->
+                                            <!-- mettre le logo à gauche de la navbar -->
+                                            <a class="navbar-brand" href="#">Joueur</a>
+                                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                                              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                                              <span class="navbar-toggler-icon"></span>
+                                            </button>
+
+
+                      <div class="dropdown dropdown-pull-right btn-group">
+                        <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false">
+                          <img src="../img/avatar/avatar_mickey.png" class="logo_admin rounded-circle" id="avatarAdmin" />
+                        </button>
+          
+                        <ul class="dropdown-menu" id="avatars">
+                          <li class="d-flex flex-row mb-3">
+                            <a class="dropdown-item choixAvatar" href="#"><img id="avatar1" onclick="changeAvatar(event)"
+                                src="../img/avatar/avatar_elsa.png" class="logo_avatar rounded-circle" /></a>
+                            <a class="dropdown-item choixAvatar" id="avatarMulan" href="#"><img id="avatar2"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_ariel.jpg"
+                                class="logo_avatar rounded-circle" /></a>
+                            <a class="dropdown-item choixAvatar" id="avatarAurore" href="#"><img id="avatar3"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_aurore.jpg"
+                                class="logo_avatar rounded-circle" /></a>
+                          </li>
+                          <li class="d-flex flex-row mb-3">
+                            <a class="dropdown-item choixAvatar" id="avatarJasmine" href="#"><img id="avatar5"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_belle.jpg"
+                                class="logo_avatar rounded-circle" /></a>
+                            <a class="dropdown-item choixAvatar" id="avatarRaiponce" href="#"><img id="avatar6"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_blanche_neige.jpg"
+                                class="logo_avatar rounded-circle" /></a>
+                            <a class="dropdown-item choixAvatar" id="avatarCendrillon" href="#"><img id="avatar4"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_cendrillon.jpg"
+                                class="logo_avatar rounded-circle" /></a>
+                          </li>
+                          <li class="d-flex flex-row mb-3">
+                            <a class="dropdown-item choixAvatar" id="avatarBlancheNeige" href="#"><img id="avatar7"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_jasmine.jpg"
+                                class="logo_avatar rounded-circle" /></a>
+                            <a class="dropdown-item choixAvatar" id="avatarBelle" href="#"><img id="avatar8"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_mulan.jpg"
+                                class="logo_avatar rounded-circle" /></a>
+                            <a class="dropdown-item choixAvatar" id="avatarAriel" href="#"><img id="avatar9"
+                                onclick="changeAvatar(event)" onclick="changeAvatar(event)"
+                                src="../img/avatar/avatar_raiponce.jpg" class="logo_avatar rounded-circle" /></a>
+                          </li>
+                          <li class="d-flex flex-row mb-3">
+                            <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar10"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_tiana.jpg"
+                                class="logo_avatar rounded-circle" /></a>
+                            <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar11"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_mickey.png"
+                                class="logo_avatar rounded-circle" /></a>
+                            <a class="dropdown-item choixAvatar" id="avatarTiana" href="#"><img id="avatar12"
+                                onclick="changeAvatar(event)" src="../img/avatar/avatar_minnie.png"
+                                class="logo_avatar rounded-circle" /></a>
+          
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="PageAcceuilConnec.html">Gestion du Profil</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="PageAcceuilConnec.html">Déconnexion</a>
+                          </li>
+                        </ul>
+                      </div>
+          
+                    </div>
+                  </nav>
             </div>
 
 
@@ -148,11 +218,27 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Valider le panier</button>
+                            <button type="button" class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" onclick="validerPanier()" id="liveToastBtn">Valider le panier</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalToggleLabel2"><span id="checkIcon"><i class="fas fa-check-circle"></i></span>Confirmation de l'achat</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Bravo! Vous avez acheté de nouveaux personnages!</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Retour</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
             <!-- Modal Vider Panier -->
             <div class="modal fade" id="viderPanierModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -174,7 +260,11 @@
                 </div>
             </div>
 
-            <!-- bouton panier -->
+            <!-- Toast Confirmation Achat Panier -->
+
+            <div id="validate" style="z-index:11;"></div>
+
+            <!-- bouton panier
             <div class="btn-group" id="boutonPanier">
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img class="panier" src="asset/img/icones/buy_icon.png" /><span class="badge badge-primary badge-pill"
@@ -182,18 +272,18 @@
         </button>
                 <ul class="dropdown-menu" id="listePanier" onclick="event.stopPropagation()">
                     <div id="listePersosPanier">
-                        <!-- construit par la methode afficherListePersoPanier -->
-                    </div>
+                        construit par la methode afficherListePersoPanier -->
+                    <!-- </div>
                     <div class="dropdown-divider"></div>
                     <li>Total de la commande: <span class="montantTotalPanier"></span></li>
                     <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#validerPanierModal1" onclick="afficheRecapCommande()">
             Valider le panier
           </button></li>
-                    <!-- Modal -->
-                    <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viderPanierModal2" id="viderPanier">Vider le
+                     Modal -->
+                    <!-- <li><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viderPanierModal2" id="viderPanier">Vider le
               panier</button></li>
                 </ul>
-            </div>
+            </div> -->  
 
 
             <h1 class="titrePage">
@@ -215,9 +305,12 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 
 <script>
+
+
+
     //liste totale des personnages
     var listePersonnages = [{
         "id": "PersoElsa",
@@ -316,12 +409,22 @@
     //
     var li;
     var liRecap;
+    //nombre Etoiles joueur
+    //TODO charger le nombre detoiles joueur a partir de la BDD
+    var nombreEtoilesJoueur=1000;
     //nombre d'elements dans le panier
     var nombreElementsDansPanier = 0;
     // somme de la commande en etoile:
     var prixTotalPanier = Number('');
 
 
+
+
+    function chargerNbEtoilesJoueur(){
+    $("#nombreEtoilesJoueur").html("Nombre d'Etoiles:"+nombreEtoilesJoueur + '<i class="fas fa-star etoile">');
+    }
+
+    chargerNbEtoilesJoueur();
     constructPorfolio();
 
 
@@ -403,11 +506,26 @@
             $("#listePanier").css("visibility", "hidden");
         }
 
-
-
     }
 
+
+//Valider le panier
     function validerPanier() {
+        if (nombreEtoilesJoueur>prixTotalPanier){
+            nombreEtoilesJoueur= nombreEtoilesJoueur-prixTotalPanier;
+            chargerNbEtoilesJoueur();
+            listePersonnagesPanier.forEach(function(pp) {
+            console.log("pp : ", pp.prenom);
+            $("#Perso" + pp.prenom+pp.prix).html('<p style="font-style:italic;"><i class="fas fa-check-circle"style="color: green"></i> Personnage déjà en votre possession</p>');
+            $("#Perso" + pp.prenom+pp.prix).prop('disabled', true);
+            viderPanier();
+        });
+
+        }
+        else{
+
+        }
+        
 
     }
 
@@ -455,7 +573,7 @@
             portolio += '<div class="media achat col">';
             portolio += '<img class="mr-3 portfolio rounded-circle" src="' + perso.img + '" alt="' + perso.prenom + '" data-bs-toggle="collapse" data-bs-target="#collapse' + perso.id + '" aria-expanded="false" aria-controls="collapseWidthExample">'
             portolio += '<div class="media-body collapse collapse-horizontal mr-200" style="min-height: 180px;" id="collapse' + perso.id + '" data-bs-parent="#portfolioCollapse">';
-            portolio += '<div class="card card-body detail" style="width: 30rem;">';
+            portolio += '<div class="card card-body detail" style="width: 35rem;">';
             portolio += '<h2 class="nomPerso">' + perso.prenom + '</h2>';
             portolio += '<p class="contenuPouvoir" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseExample" data-bs-target="#collapseChild' + perso.id + '">' + perso.pouvoirLibelle + '&nbsp; <img class="iconePouvoir" src="' + perso.pouvoirImg + '" /></p>';
             portolio += '<div class="collapse" id="collapseChild' + perso.id + '">';
@@ -464,7 +582,7 @@
             portolio += '</div>';
             portolio += '</div>';
             portolio += '<p class="prix">' + perso.prix + '&nbsp;<i class="fas fa-star etoile"></i></p>';
-            portolio += '<div class="divBouton">';
+            portolio += '<div class="divBouton" id="' + perso.id +perso.prix+ '">';
             portolio += '<button type="button" class="btn btn-info btn-sm bouton" id="' + perso.id + '" onclick="ajouterAuPanier(id)"><i class="fas fa-cart-plus" style="color: white"></i> Acheter</button>';
             portolio += '</div>';
             portolio += '</div>';
