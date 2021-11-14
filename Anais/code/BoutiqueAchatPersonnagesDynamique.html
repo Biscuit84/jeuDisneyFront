@@ -227,10 +227,10 @@
                 <div class="modal-dialog modal-dialog-centered">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalToggleLabel2"><span id="checkIcon"><i class="fas fa-check-circle"></i></span>Confirmation de l'achat</h5>
+                      <h5 class="modal-title" id="exampleModalToggleLabel2" ><!-- Affichage automatique par JS --></h5>
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
+                    <div class="modal-body" id="messageAchatPanier">
                       <p>Bravo! Vous avez acheté de nouveaux personnages!</p>
                     </div>
                     <div class="modal-footer">
@@ -411,7 +411,7 @@
     var liRecap;
     //nombre Etoiles joueur
     //TODO charger le nombre detoiles joueur a partir de la BDD
-    var nombreEtoilesJoueur=1000;
+    var nombreEtoilesJoueur=500;
     //nombre d'elements dans le panier
     var nombreElementsDansPanier = 0;
     // somme de la commande en etoile:
@@ -508,22 +508,30 @@
 
     }
 
+    if(nombreEtoilesJoueur>prixTotalPanier){
+        
+    }
+    
 
 //Valider le panier
     function validerPanier() {
-        if (nombreEtoilesJoueur>prixTotalPanier){
+        if (nombreEtoilesJoueur>=prixTotalPanier){
+            $("#exampleModalToggleLabel2").html('<span id="checkIcon"><i class="fas fa-check-circle"></i></span>Confirmation de l\'achat');
+            $("#checkIcon").css("color", "green");
+            $("#messageAchatPanier").html('<p>Bravo! Vous avez acheté de nouveaux personnages!</p>')
             nombreEtoilesJoueur= nombreEtoilesJoueur-prixTotalPanier;
             chargerNbEtoilesJoueur();
             listePersonnagesPanier.forEach(function(pp) {
             console.log("pp : ", pp.prenom);
-            $("#Perso" + pp.prenom+pp.prix).html('<p style="font-style:italic;"><i class="fas fa-check-circle"style="color: green"></i> Personnage déjà en votre possession</p>');
+            $("#Perso" + pp.prenom+pp.prix).html('<p style="font-style:italic;"><i class="fas fa-check-circle" style="color: green"></i> Personnage déjà en votre possession</p>');
             $("#Perso" + pp.prenom+pp.prix).prop('disabled', true);
             viderPanier();
         });
-
         }
         else{
-
+        $("#exampleModalToggleLabel2").html('<span id="checkIconRed"><i class="fas fa-times-circle style="color: red"></i></span>Annulation de l achat');
+        $("#checkIconRed").css("color", "red");
+        $("#messageAchatPanier").html('<p>Vous n avez pas assez d etoiles pour acheter tous les elements du panier.</p>')
         }
         
 
@@ -536,7 +544,6 @@
         montantDuPanier();
         nombreElementsDansPanier = 0;
         $("#nombreElementsDansPanier").text(nombreElementsDansPanier);
-
         for (p of listePersonnages) {
             $("#Perso" + p.prenom).prop('disabled', false);
         }
