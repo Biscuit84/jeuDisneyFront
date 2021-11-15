@@ -120,7 +120,7 @@ html{
 body{
   margin:0px;
   
-  background-image: url(../img/princesses_transparent_couleurs.png);
+  background-image: url(../asset/img/princesses_transparent_couleurs.png);
   background-repeat:no-repeat;
   background-attachment: fixed;
   background-size: cover;

@@ -66,7 +66,7 @@
 
 body{
     margin:0px;
-    background-image: url(../img/princesses_transparent_couleurs.png);
+    background-image: url(../asset/img/princesses_transparent_couleurs.png);
     background-repeat:no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -75,25 +75,42 @@ body{
     */
   }
 
+  /* *********************************************main********************************************** */
+
   .containerCard {
     background-color: rgba(245, 245, 245, 0.7);
     border-radius: 10px;
 }
 
+main{
+  display: flex;
+  justify-content: center;
+}
+
 #ecranconnec{
-  width:50%;
+  width:40rem;
   display:flex;
   justify-content:center;
   align-items:center;
+  margin-top: 1rem;
 }
 
 
   .infoGeneraleNomItem{
     font-weight: bold;
+    flex: 1 1 0px;
   }
 
   .infoGeneraleDef{
     font-style: italic;
+    flex: 1 1 0px;
+    text-align:center;
+
+  }
+
+  .infoChevron{
+    flex: 1 1 0px;
+    text-align:end;
   }
 
   
@@ -109,3 +126,8 @@ body{
     right: 0;
     left: auto;
   }
+
+  .dropdown-toggle::after {
+    content: none !important;
+  }
+
