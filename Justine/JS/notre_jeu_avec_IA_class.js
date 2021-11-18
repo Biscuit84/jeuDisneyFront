@@ -462,7 +462,7 @@ function Jouer(pion) {
 function FinDeTour(pion)
 {
   // on a fini le tour ça incremente notre nombre de tour jouer
-  pion.playedTurn =   pion.playedTurn + 1;
+  //pion.playedTurn =   pion.playedTurn + 1;
   //console.log("on est dans fin de tour");
 
 // si c'est pas le dernier pion :
@@ -470,7 +470,7 @@ function FinDeTour(pion)
 if (joueurActuel!=3){
 
        joueurActuel++;
-       console.log("on incremente le numero du joueur")
+      // console.log("on incremente le numero du joueur")
        console.log(joueurActuel);
 
        pionSuivant=listePion[joueurActuel];
@@ -481,7 +481,8 @@ if (joueurActuel!=3){
 else{ // sinon on revient au joueur
     joueurActuel=0;
     Tour++;// incrémente le nombre de tour
-    console.log(joueurActuel);
+    console.log("nouveau tour")
+    //console.log("joueur suivant :" + joueurActuel);
     $("#boutonJouer").prop('disabled', false);
     $("#boutonFinDeTour").prop('disabled', false);
 
