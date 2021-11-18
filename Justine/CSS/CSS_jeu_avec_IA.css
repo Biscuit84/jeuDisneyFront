@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Devonshire&display=swap");
+/* **********************************************plateau jeu***************************************************************** */
+
+
+#jeu{
+  border: solid grey 2px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  width: 65%;
+  height: 100%;
+}
+
+#plateauCanvas {
+  width: 100%;
+  object-fit: contain;
+}
+
+
+#ecranDeJeu {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #dbbadbc4;
+  height: 100%;
+}
+
+
+#tableauDeControl {
+  flex-wrap: wrap;
+  width: 20%;
+}
+
+/* **********************************************game control***************************************************************** */
+
+.Tour{
+  text-align: center;
+  font-size: 3em;
+  font-family: 'Devonshire', cursive;
+  z-index: 1;
+}
+.TourJoueur{
+  text-align: center;
+  font-size: 10px;
+  z-index: 1;
+}
+
+.gameControl {
+  border: solid grey 2px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  height: 70%;
+  width: 100%;
+  align-items: center;
+  align-content: center;
+}
+
+.bouton {
+  display: flex;
+  align-self: center;
+  justify-content: space-around;
+  align-content: center;
+  align-items: center;
+  height: 50px;
+  width: 110px;
+  font-family:  cursive;
+}
+
+.dice{
+  height: 110px;
+  width: 110px;
+  background-color:white;
+  border: solid grey 2px;
+  border-radius: 5px;
+  display: flex;
+}
+/* **********************************************sound control***************************************************************** */
+
+.soundControl {
+  border: solid grey 2px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  height: 30%;
+  width: 100%;
+}
+
+
+.volume-slider-con{
+  height:10px;
+  width:20%;
+  background-color:#ddd;
+  justify-content: center;
+  align-content: center;
+}
+
+.volume-slider{
+   height:100%;
+   width:100%;
+   background-color:red;
+   justify-content: center;
+   align-content: center;
+}
