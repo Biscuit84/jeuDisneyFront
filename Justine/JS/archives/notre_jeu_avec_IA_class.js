@@ -1,55 +1,6 @@
 
-
-// nombre de case du plateau
-format=nbcaseDemande();
-var nbcasePlateau = format[0];
-var nBcaseW = format[1];
-var nBcaseH = format[2];
-var listeCases = [];
-
-
-wMax=$("#canvasesdiv").width(); // on prepare le responsive !
-hMax=$("#canvasesdiv").height();
-//console.log(" TEST TEST TEST");
-console.log(wMax +" et "+ hMax);
-
-w = wMax - (wMax%nBcaseW); // pour couper les cases proprement
-h= hMax - (hMax%nBcaseH);
-console.log((wMax%nBcaseW) +" et "+ (hMax%nBcaseH));
-
-// taille du canvas
- //w=800;
- //h=600;
-
-// taille des cases
-var taillecaseW = w / nBcaseW;
-var taillecaseH = h / nBcaseH;
-
-//console.log(taillecaseW +" et "+ taillecaseH);
-
-
-// nombre de de
-var nombreDe = 0 ;
-nombreDe=nbDeDemande();
-
-// vitesse
-var valeurdelavitesse = 1;
-var slider = document.getElementById("vitesseRange");
-var output = document.getElementById("vitesse");
-//output.innerHTML = slider.value;
-
-
-slider.oninput = function() {
-  output.innerHTML = this.value;
-  //console.log(this.value);
-}
-
-
-
   // variables
-  var velocityH = 1; // nb de pixel d'avancement du pion par raffraichissement (10ms)
-  var velocityV = 1;
-  var tauxRaffraichissement = 10; // vitesse du setinterval
+  var velocity = 2; // nb de pixel d'avancement du pion par raffraichissement (10ms)
   var Tour = 0;
   var joueurActuel = 0;
   var tourActuel = document.getElementById("NbTour");
@@ -62,29 +13,21 @@ slider.oninput = function() {
   var backgroundPlayerIA2 = new Image();
   var backgroundPlayerIA3 = new Image();
 
+  // init du canvas
+  var canvasPlateau = document.getElementById("plateauCanvas");
+  var ctxPlateau = canvasPlateau.getContext("2d");
+  w = ctxPlateau.canvas.width;
+  h = ctxPlateau.canvas.height;
 
-
-     // inti background
-    backgroundImage.src = "../img/texture.jpg";
-    var background = document.getElementById("background");
-    var ctxBackground = background.getContext("2d");
-    ctxBackground.canvas.width=w;
-    ctxBackground.canvas.height=h;
-
-    // init du canvas
-    var canvasPlateau = document.getElementById("plateauCanvas");
-    var ctxPlateau = canvasPlateau.getContext("2d");
-    //  w = ctxPlateau.canvas.width;
-    //  h = ctxPlateau.canvas.height;
-    ctxPlateau.canvas.width=w;
-    ctxPlateau.canvas.height=h;
+   // inti background
+  backgroundImage.src = "../img/princess.png";
+  var background = document.getElementById("background");
+  var ctxBackground = background.getContext("2d");
 
   // init player
   //backgroundPlayer.src = "../img/milkandmocha.jpg";
   var player = document.getElementById("player");
   var ctxPlayer = player.getContext("2d");
-  ctxPlayer.canvas.width=w;
-  ctxPlayer.canvas.height=h;
 
   // init IA
   var playerIA1 = document.getElementById("IA1");
@@ -93,13 +36,19 @@ slider.oninput = function() {
   var ctxPlayerIA2 = playerIA2.getContext("2d");
   var playerIA3 = document.getElementById("IA3");
   var ctxPlayerIA3 = playerIA3.getContext("2d");
-  ctxPlayerIA1.canvas.width=w;
-  ctxPlayerIA1.canvas.height=h;
-  ctxPlayerIA2.canvas.width=w;
-  ctxPlayerIA2.canvas.height=h;
-  ctxPlayerIA3.canvas.width=w;
-  ctxPlayerIA3.canvas.height=h;
 
+  // nombre de case du plateau
+  format=nbcaseDemande();
+  var nbcasePlateau = format[0];;
+  var nombreDe = 0 ;
+  nombreDe=nbDeDemande();
+
+  // taille des cases
+  var nBcaseW = format[1];
+  var nBcaseH = format[2];
+  var taillecaseW = w / nBcaseW;
+  var taillecaseH = h / nBcaseH;
+  var listeCases = [];
 
 
 // TODO: effacer futurPositionXPlayer, futurPositionYPlayer, car obselete
@@ -193,22 +142,14 @@ function Render() {
   drawAll();
 //ctxPlateau.globalCompositeOperation = "source-over"; // pour afficher le pion SUR le fond
 //ctxPlayer.globalCompositeOperation = "source-over"; // pour afficher le pion SUR le fond
-   slider.oninput = function() {
-  output.innerHTML = this.value;
-  niveauDeVitesseDuPion = this.value;
-   }
-   niveauDeVitesseDuPion = slider.value;
-
-
 }
 
 //dessine le fond d'écran et le joueur
 function drawAll() {
-  setInterval(drawBackground, tauxRaffraichissement);
+  //setInterval(drawBackground, 10);
   drawBackground(); // ne sert à rien
   drawPlateau();
-  setInterval(drawPlayers, tauxRaffraichissement);
-
+  setInterval(drawPlayers, 10);
 
   //if (nombreDe==1){
 //cacherLeDe2();
@@ -220,8 +161,8 @@ function drawAll() {
 // dessine le fond d'ecran
 function drawBackground() {
   //clearRect(positionx, position y, positionfinale x, position finale y)
-  ctxBackground.clearRect(0, 0, w, h);
-  ctxBackground.drawImage(backgroundImage, 0, 0, w,h);
+  ctxBackground.clearRect(0, 0, 800, 800);
+  ctxBackground.drawImage(backgroundImage, 0, 0, 800,800);
 }
 
 // dessine le plateau
@@ -306,49 +247,28 @@ function drawPlayers()
   drawPlayer(pionIA1);
   drawPlayer(pionIA2);
   drawPlayer(pionIA3);
+
+  // affiche des boutons en conséquence :
+  //enableButton();
+  //console.log("ohé");
   tourActuel.innerHTML = Tour;
   tourJoueur.innerHTML = joueurActuel;
-
-  if (pionIA1.playerIsMoving || pionIA2.playerIsMoving || pionIA3.playerIsMoving || pionJoueur.playerIsMoving)
-  {
-    slider.setAttribute('disabled', true);
-    console.log("un pion bouge")
-  }
-  else {
-    slider.removeAttribute('disabled');
-    console.log("tous les pions sont à l'arret")
-
-  }
 }
 
 // dessine un pion
 function drawPlayer(pion) {
-
-
-// vitesse en fonciton du range
-n= niveauDeVitesseDuPion;
-
-if      (n == 1 )  {  velocityH = 1;              velocityW = 1;}               // tres lent
-else if (n == 2 )  {  velocityH = taillecaseH/32;    velocityW = taillecaseW/32;}
-else if (n == 3 )  {  velocityH = taillecaseH/16;    velocityW = taillecaseW/16;}
-else if (n == 4 )  {  velocityH = taillecaseH/8;    velocityW = taillecaseW/8;}
-else if (n == 5 )  {  velocityH = taillecaseH/4;    velocityW = taillecaseW/4;}
-else if (n == 6 )  {  velocityH = taillecaseH/2;    velocityW = taillecaseW/2;}
-else if (n == 7 ) {  velocityH = taillecaseH;    velocityW = taillecaseW;}     // tres rapide
-
-
   //clear pour refresh
   if(pion.numeroPassage==0){
-        ctxPlayer.clearRect(0, 0, w, h);
+        ctxPlayer.clearRect(0, 0, 800, 800);
   }
   else if (pion.numeroPassage==1) {
-        ctxPlayerIA1.clearRect(0, 0, w, h);
+        ctxPlayerIA1.clearRect(0, 0, 800, 800);
   }
   else if (pion.numeroPassage==2) {
-        ctxPlayerIA2.clearRect(0, 0, w, h);
+        ctxPlayerIA2.clearRect(0, 0, 800, 800);
   }
   else if (pion.numeroPassage==3) {
-        ctxPlayerIA3.clearRect(0, 0, w, h);
+        ctxPlayerIA3.clearRect(0, 0, 800, 800);
   }
 
   //console.log("on est dans DrawPlayer")
@@ -361,9 +281,6 @@ else if (n == 7 ) {  velocityH = taillecaseH;    velocityW = taillecaseW;}     /
   pion.positionIndexCasePlayerSuivante++;
   pion.positionIndexCasePlayerPrecedente = pion.positionIndexCasePlayer;
   pion.positionIndexCasePlayerPrecedente--;
-
-  //console.log("velocityH="  +velocityH);
-
 
   var diff=pion.positionIndexCasePlayer-pion.futurePositionIndexCasePlayer;
   //console.log(diff);
@@ -379,22 +296,22 @@ else if (n == 7 ) {  velocityH = taillecaseH;    velocityW = taillecaseW;}     /
 
       if (listeCases[pion.positionIndexCasePlayer].positionCaseY < listeCases[pion.positionIndexCasePlayerSuivante].positionCaseY)
         {      // avancer case par case
-        pion.positionYPlayer += velocityH;
+        pion.positionYPlayer += velocity;
         //console.log("on avance en Y")
         }
       else if (listeCases[pion.positionIndexCasePlayer].positionCaseY > listeCases[pion.positionIndexCasePlayerSuivante].positionCaseY)
         {        //reculer case par case
-        pion.positionYPlayer -= velocityH;
+        pion.positionYPlayer -= velocity;
         //console.log("on recule en Y")
         }
 
       if ( listeCases[pion.positionIndexCasePlayer].positionCaseX < listeCases[pion.positionIndexCasePlayerSuivante].positionCaseX)
         {      // avancer case par case
-        pion.positionXPlayer += velocityW;
+        pion.positionXPlayer += velocity;
         }
       else if (listeCases[pion.positionIndexCasePlayer].positionCaseX > listeCases[pion.positionIndexCasePlayerSuivante].positionCaseX)
         {      //reculer case par case
-        pion.positionXPlayer -= velocityW;
+        pion.positionXPlayer -= velocity;
         }
     }
     else if (diff>0)
@@ -402,19 +319,19 @@ else if (n == 7 ) {  velocityH = taillecaseH;    velocityW = taillecaseW;}     /
       pion.playerIsMoving = true;
       if (listeCases[pion.positionIndexCasePlayer].positionCaseY < listeCases[pion.positionIndexCasePlayerPrecedente].positionCaseY)
         {      // avancer case par case
-        pion.positionYPlayer += velocityH;
+        pion.positionYPlayer += velocity;
         }
       else if (listeCases[pion.positionIndexCasePlayer].positionCaseY > listeCases[pion.positionIndexCasePlayerPrecedente].positionCaseY)
         {        //reculer case par case
-        pion.positionYPlayer -= velocityH;
+        pion.positionYPlayer -= velocity;
         }
       if ( listeCases[pion.positionIndexCasePlayer].positionCaseX < listeCases[pion.positionIndexCasePlayerPrecedente].positionCaseX)
         {      // avancer case par case
-        pion.positionXPlayer += velocityW;
+        pion.positionXPlayer += velocity;
         }
       else if (listeCases[pion.positionIndexCasePlayer].positionCaseX > listeCases[pion.positionIndexCasePlayerPrecedente].positionCaseX)
         {      //reculer case par case
-        pion.positionXPlayer -= velocityW;
+        pion.positionXPlayer -= velocity;
         }
     }
     else if (diff==0) {
@@ -423,6 +340,22 @@ else if (n == 7 ) {  velocityH = taillecaseH;    velocityW = taillecaseW;}     /
 
     }
   }
+
+  //bouton accessible une fois que le joueur arrête de bouger
+
+/*
+
+     if(pion.numeroPassage==0 && diff == 0 && pion.playerIsMoving){ // cas où le joueur joue
+       console.log("le pion est à l'arret")
+       //disabledButtonFalse();
+       //$("#boutonJouer").prop('disabled', true);
+       //$("#boutonFinDeTour").prop('disabled', false);
+       pion.playerIsMoving = false; // il a finit de bouger
+     }
+*/
+
+
+
 
   // redessiner le player pour le refresh
   if(pion.numeroPassage==0){
@@ -468,6 +401,37 @@ function disabledButtonFalse () {
 //  $(".bouton").prop('disabled', false);
 }
 
+// joue sur l'affichage des bouttons
+function enableButton(){
+
+//for (let i = 0; i < 3; i++) {console.log(listePion[i].numeroPassage +"est a son "  + listePion[i].playedTurn +"tour");}
+
+if (pionIA1.playedTurn < pionJoueur.playedTurn && pionIA2.playedTurn < pionJoueur.playedTurn && pionIA3.playedTurn < pionJoueur.playedTurn){ // ce n'est pas le tour du joueur
+  $("#boutonJouer").prop('disabled', true);
+  //console.log("c'est au tour des autres ");
+  if (pionJoueur.playerIsMoving){ // on ne peut pas appuyer sur les boutons quand notre pion bouge
+    console.log("le joeur est en train de jouer");
+    $("#boutonJouer").prop('disabled', true);
+    $("#boutonFinDeTour").prop('disabled', true);
+  }
+  else if (pionJoueur.playerIsMoving== false) {
+    console.log("le joeur ne joue pas");
+    $("#boutonJouer").prop('disabled', true);
+    $("#boutonFinDeTour").prop('disabled', false);
+  }
+
+
+}
+else {
+  // les boutons sont dispo par défaut
+    $(".bouton").prop('disabled', false);
+    console.log("par defaut");
+}
+
+}
+
+
+
 // permet de jouer
 function Jouer(pion) {
   playSoundDice();
@@ -507,7 +471,7 @@ if (joueurActuel!=3){
 
        joueurActuel++;
       // console.log("on incremente le numero du joueur")
-       //console.log(joueurActuel);
+       console.log(joueurActuel);
 
        pionSuivant=listePion[joueurActuel];
        setTimeout(Jouer, 2000, pionSuivant);
@@ -517,7 +481,7 @@ if (joueurActuel!=3){
 else{ // sinon on revient au joueur
     joueurActuel=0;
     Tour++;// incrémente le nombre de tour
-    //console.log("nouveau tour")
+    console.log("nouveau tour")
     //console.log("joueur suivant :" + joueurActuel);
     $("#boutonJouer").prop('disabled', false);
     $("#boutonFinDeTour").prop('disabled', false);
@@ -562,6 +526,7 @@ switch (lanceDe) {
 
 // affiche des dés qui roule en 2D
 function roulementDe(){
+ //disabledButtonTrue ();
   var idDe = "imageDe";
   setTimeout(DiceValue, 400, idDe);
   setTimeout(DiceValue, 600, idDe);
@@ -587,7 +552,7 @@ function TourJoueur(pion){
 
     // Affiche la valeur du dé dans le html
     var monDeAvance = document.getElementById("valeurDeAvance");
-    //console.log(monDeAvance);
+    console.log(monDeAvance);
 
     var totalDe = 0;
     //random de 1 à 6s
