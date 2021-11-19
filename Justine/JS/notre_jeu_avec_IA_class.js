@@ -55,6 +55,12 @@ slider.oninput = function() {
   var tourActuel = document.getElementById("NbTour");
   var tourJoueur = document.getElementById("JoueurTour");
 
+  //var feu=false;
+  BF =  document.getElementById("beforeFireworks");
+  BF.style.display = "none";
+  BF2 =  document.getElementById("afterFireworks");
+  BF2.style.display = "none";
+
   // init image des canvas
   var backgroundImage = new Image();
   var backgroundPlayer = new Image();
@@ -234,7 +240,7 @@ function drawPlateau() {
 
     for (x = 0; x < nBcaseH; x ++) {
           // on créé la case
-      var Case = {
+      var CaseVirtuelle = {
         numero: 0,
         positionCaseX: 0,
         positionCaseY: 0
@@ -256,10 +262,10 @@ function drawPlateau() {
       var pY=taillecaseH * y;
 
       // on memorise la case :
-      Case.numero = numeroCase;
-      Case.positionCaseX = pX;
-      Case.positionCaseY = pY;
-      listeCases.push(Case);
+      CaseVirtuelle.numero = numeroCase;
+      CaseVirtuelle.positionCaseX = pX;
+      CaseVirtuelle.positionCaseY = pY;
+      listeCases.push(CaseVirtuelle);
 
       // on dessine la case :
       ctxPlateau.beginPath();
@@ -282,15 +288,13 @@ function drawPlateau() {
         ctxPlateau.textBaseline = 'hanging';
         ctxPlateau.textAlign = "center";
         var affichecase = numeroCase-1;
-        if (numeroCase==nbcasePlateau)
-          {
+        if (numeroCase==nbcasePlateau)  {
             var str="arrivée";
           }
         else if (numeroCase==1) {
               var str="départ";
           }
-        else
-          {
+        else  {
             var str="case " + affichecase;
           }
         ctxPlateau.strokeText(str, pX+taillecaseW/2, pY+taillecaseH/2);  //ctx.strokeText(texte, x, y [, largeurMax]);
@@ -606,17 +610,90 @@ function TourJoueur(pion){
 
     // gere le cas où on dépasse la case arrivee
     if (nouvelIndex > listeCases.length - 1) {
-      nouvelIndex = listeCases.length - 1; }
+      nouvelIndex = listeCases.length - 1;
+
+      // et donc ça veut dire qu'on a gagné !
+      finDePartie(pion);
+    }
 
     //détermine la future position X et Y du player
     pion.futurePositionIndexCasePlayer = nouvelIndex;
     //// TODO: faire les actions/pouvoirs des joueurs
+
+
+}
+
+function finDePartie(pion) {
+
+if (pion==pionJoueur){
+  // le joueur à gagner
+  fireworks();
+}
+  else {
+  // le pion à perdu
+  makeItRain();
+  }
 }
 
 
 
-//////////////////////////////////////////////////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////
+// fireworks
+function fireworks(){
+
+/*
+  if (feu == true) {
+      //Pour masquer la division :
+    BF =  document.getElementById("beforeFireworks");
+    BF.style.display = "none";
+    BF2 =  document.getElementById("afterFireworks");
+    BF2.style.display = "none";
+      ///Pour afficher la division :
+      //document.getElementById(identifiant_de_ma_div).style.display = block;
+  }
+  else if (feu== false)
+    {*/
+    BF =  document.getElementById("beforeFireworks");
+    BF.style.display = "flex";
+    BF2 =  document.getElementById("afterFireworks");
+    BF2.style.display = "flex";
+  //}
+
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// rain
+var makeItRain = function() {
+  //clear out everything
+  $('.rain').empty();
+
+  var increment = 0;
+  var drops = "";
+  var backDrops = "";
+
+  while (increment < 100) {
+    //couple random numbers to use for various randomizations
+    //random number between 98 and 1
+    var randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
+    //random number between 5 and 2
+    var randoFiver = (Math.floor(Math.random() * (5 - 2 + 1) + 2));
+    //increment
+    increment += randoFiver;
+    //add in a new raindrop with various randomizations to certain CSS properties
+    drops += '<div class="drop" style="left: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+    backDrops += '<div class="drop" style="right: ' + increment + '%; bottom: ' + (randoFiver + randoFiver - 1 + 100) + '%; animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"><div class="stem" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div><div class="splat" style="animation-delay: 0.' + randoHundo + 's; animation-duration: 0.5' + randoHundo + 's;"></div></div>';
+  }
+
+  $('.rain.front-row').append(drops);
+  $('.rain.back-row').append(backDrops);
+}
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
 // son
 function playSoundDice() {
   document.getElementById("diceThrowAudio").setAttribute('src', '../sound/diceThrow.mp3');
