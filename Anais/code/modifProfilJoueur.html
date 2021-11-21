@@ -94,7 +94,8 @@
 
               <ul class="dropdown-menu">
                 <li class="nav-item">
-                  <a class="nav-link" href="PageAcceuilConnec.html">Déconnexion</a>
+                  <a class="nav-link" href="PageAcceuilConnec.html" data-bs-toggle="modal"
+                  data-bs-target="#seDeconnecter">Déconnexion</a>
                 </li>
               </ul>
             </div>
@@ -114,7 +115,7 @@
 
     <div class="card containerCard" id="ecranconnec">
       <div class="card-body">
-
+        <h5 class="card-header">Gestion du profil</h5>
         <div class="card blocksCard" style="width: 30rem;">
           <div class="card-header">
             Informations générales
@@ -198,57 +199,56 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modification de l'avatar</h5>
-            <img src="../asset/img/avatar/avatar_mickey.png" class="logo_admin rounded-circle" id="avatarAdmin2" />
+            <h5 class="modal-title" id="exampleModalLabel">Modification de l'avatar </h5>
+            <!-- <img src="../asset/img/avatar/avatar_mickey.png" class="logo_admin rounded-circle" id="avatarAdmin2" /> -->
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
-          <div class="modal-body">
+          <div class="modal-body" id="avatars">
 
-            <ul id="avatars">
-              <li class="d-flex flex-row mb-3">
-                <a class="choixAvatar" id="avatarElsa" href="#"><img id="avatar1" onclick="changeURLAvatar(avatar1)"
+            <ul >
+              <li class="d-flex flex-row mb-3 justify-content-around">
+                <a class="choixAvatar" id="avatarElsa" href="#" onclick="changeURLAvatar(id)"><img id="avatar1" 
                     src="../asset/img/avatar/avatar_elsa.png" class="logo_avatar rounded-circle" /></a>
-                <a class="choixAvatar" id="avatarMulan" href="#"><img id="avatar2" onclick="changeURLAvatar(event)"
+                <a class="choixAvatar" id="avatarMulan" href="#" onclick="changeURLAvatar(id)"><img id="avatar2" 
                     src="../asset/img/avatar/avatar_ariel.jpg" class="logo_avatar rounded-circle" /></a>
-                <a class="choixAvatar" id="avatarAurore" href="#"><img id="avatar3" onclick="changeURLAvatar(event)"
+                <a class="choixAvatar" id="avatarAurore" href="#" onclick="changeURLAvatar(id)"><img id="avatar3" 
                     src="../asset/img/avatar/avatar_aurore.jpg" class="logo_avatar rounded-circle" /></a>
               </li>
-              <li class="d-flex flex-row mb-3">
-                <a class="choixAvatar" id="avatarJasmine" href="#"><img id="avatar5" onclick="changeURLAvatar(event)"
+              <li class="d-flex flex-row mb-3 justify-content-around">
+                <a class="choixAvatar" id="avatarJasmine" href="#"  onclick="changeURLAvatar(id)"><img id="avatar5"
                     src="../asset/img/avatar/avatar_belle.jpg" class="logo_avatar rounded-circle" /></a>
-                <a class="choixAvatar" id="avatarRaiponce" href="#"><img id="avatar6" onclick="changeURLAvatar(event)"
+                <a class="choixAvatar" id="avatarRaiponce" href="#" onclick="changeURLAvatar(id)"><img id="avatar6" 
                     src="../asset/img/avatar/avatar_blanche_neige.jpg" class="logo_avatar rounded-circle" /></a>
-                <a class="choixAvatar" id="avatarCendrillon" href="#"><img id="avatar4" onclick="changeURLAvatar(event)"
+                <a class="choixAvatar" id="avatarCendrillon" href="#" onclick="changeURLAvatar(id)"><img id="avatar4" 
                     src="../asset/img/avatar/avatar_cendrillon.jpg" class="logo_avatar rounded-circle" /></a>
               </li>
-              <li class="d-flex flex-row mb-3">
-                <a class="choixAvatar" id="avatarBlancheNeige" href="#"><img id="avatar7"
-                    onclick="changeURLAvatar(event)" src="../asset/img/avatar/avatar_jasmine.jpg"
+              <li class="d-flex flex-row mb-3 justify-content-around">
+                <a class="choixAvatar" id="avatarBlancheNeige" href="#" onclick="changeURLAvatar(id)" ><img id="avatar7"
+                    src="../asset/img/avatar/avatar_jasmine.jpg"
                     class="logo_avatar rounded-circle" /></a>
-                <a class="choixAvatar" id="avatarBelle" href="#"><img id="avatar8" onclick="changeURLAvatar(event)"
+                <a class="choixAvatar" id="avatarBelle" href="#" onclick="changeURLAvatar(id)"><img id="avatar8" 
                     src="../asset/img/avatar/avatar_mulan.jpg" class="logo_avatar rounded-circle" /></a>
-                <a class="choixAvatar" id="avatarAriel" href="#"><img id="avatar9" onclick="changeURLAvatar(event)"
+                <a class="choixAvatar" id="avatarAriel" href="#" onclick="changeURLAvatar(id)"><img id="avatar9" 
                     src="../asset/img/avatar/avatar_raiponce.jpg" class="logo_avatar rounded-circle" /></a>
               </li>
-              <li class="d-flex flex-row mb-3">
-                <a class="choixAvatar" id="avatarTiana" href="#"><img id="avatar10" onclick="changeURLAvatar(event)"
+              <li class="d-flex flex-row mb-3 justify-content-around">
+                <a class="choixAvatar" id="avatarTiana" href="#" onclick="changeURLAvatar(id)"><img id="avatar10" 
                     src="../asset/img/avatar/avatar_tiana.jpg" class="logo_avatar rounded-circle" /></a>
-                <a class="choixAvatar" id="avatarTiana" href="#"><img id="avatar11" onclick="changeURLAvatar(event)"
+                <a class="choixAvatar" id="avatarMickey" href="#" onclick="changeURLAvatar(id)"><img id="avatar11" 
                     src="../asset/img/avatar/avatar_mickey.png" class="logo_avatar rounded-circle" /></a>
-                <a class="choixAvatar" id="avatarTiana" href="#"><img id="avatar12" onclick="changeURLAvatar(event)"
+                <a class="choixAvatar" id="avatarMinnie" href="#" onclick="changeURLAvatar(id)"><img id="avatar12" 
                     src="../asset/img/avatar/avatar_minnie.png" class="logo_avatar rounded-circle" /></a>
 
               </li>
             </ul>
-            <!-- </div> -->
-
+            </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
               <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
                 onclick="changeAvatar()">Valider</button>
             </div>
-          </div>
+         
         </div>
       </div>
     </div>
@@ -296,7 +296,7 @@
 
           <div class="modal-body">
 
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" method="post" novalidate>
               <div class="mb-3">
                 <label for="validatePseudo" class="form-label">Pseudo</label>
                 <input type="text" class="form-control" id="validatePseudo">
@@ -326,7 +326,7 @@
 
           <div class="modal-body">
 
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation"method="post" novalidate>
               <div class="mb-3">
                 <label for="validateDateNaissance" class="form-label">Date de naissance</label>
                 <input type="date" min="1900-01-01" max="2021-10-19" value="2000-01-01" id="validateDateNaissance">
@@ -353,7 +353,7 @@
 
           <div class="modal-body">
 
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" method="post" novalidate>
               <div class="mb-3">
                 <label for="validateGenre" class="form-label">Genre</label>
                 <select name="civilite" id="validateGenre">
@@ -384,19 +384,19 @@
 
           <div class="modal-body">
 
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" method="post" novalidate>
               <div class="mb-3">
                 <label for="validationAncienEmail" class="form-label">Ancienne adresse e-mail</label>
-                <input type="email" placeholder="lorem@mail.fr" id="validationAncienEmail">
+                <input type="email" class="form-control" placeholder="lorem@mail.fr" id="validationAncienEmail">
               </div>
               <div class="mb-3">
                 <label for="validationNouveauEmail" class="form-label">Nouvelle adresse e-mail</label>
-                <input type="email" placeholder="lorem@mail.fr" id="validationNouveauEmail">
+                <input type="email" class="form-control" placeholder="lorem@mail.fr" id="validationNouveauEmail">
               </div>
               <div class="mb-3">
                 <label for="validationConfirmationNouveauEmail" class="form-label">Confirmation de la nouvelle adresse
                   e-mail</label>
-                <input type="email" placeholder="lorem@mail.fr" id="validationConfirmationNouveauEmail">
+                <input type="email" class="form-control" placeholder="lorem@mail.fr" id="validationConfirmationNouveauEmail">
               </div>
           </div>
 
@@ -420,7 +420,7 @@
 
           <div class="modal-body">
 
-            <form class="needs-validation" novalidate>
+            <form class="needs-validation" method="post" novalidate>
               <div class="mb-3">
                 <label for="validationTel" class="form-label">Nouveau numero de telephone</label>
                 <input type="text" id="validationTel">
@@ -444,50 +444,29 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
-          <div class="modal-body">
+          <div class="modal-body element-center-card">
 
-            <form class="needs-validation" novalidate>
-              <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                  <label for="ancienPassword" class="form-label">Ancien mot de passe</label>
-                </div>
-                <div class="col-auto">
+            <form class="needs-validation form-horizontal" method="post" role="form" novalidate >
+              <div class="mb-3">
+                  <label for="ancienPassword" class="control-label ">Ancien mot de passe</label>
                   <input type="password" id="ancienPassword" class="form-control" aria-describedby="passwordHelpInline">
-                </div>
                 <div class="col-auto">
-                  <span id="passwordHelpInline" class="form-text">
-                    Entre 8 et 20 characteres.
-                  </span>
+                  <span id="passwordHelpInline" class="form-text nbCharacteres">Entre 8 et 20 characteres</span>
                 </div>
               </div>
-              <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                  <label for="nouveauPassword" class="form-label">Nouveau mot de passe</label>
-                </div>
-                <div class="col-auto">
-                  <input type="password" id="nouveauPassword" class="form-control"
-                    aria-describedby="passwordHelpInline">
-                </div>
-                <div class="col-auto">
-                  <span id="passwordHelpInline" class="form-text">
-                    Entre 8 et 20 characteres.
-                  </span>
-                </div>
+              <div class="mb-3">
+                  <label for="nouveauPassword" class="control-label ">Nouveau mot de passe</label>
+                  <input type="password" id="nouveauPassword" class="form-control" aria-describedby="passwordHelpInline">
+                  <div class="col-auto">
+                    <span id="passwordHelpInline" class="form-text nbCharacteres">Entre 8 et 20 characteres</span>
+                  </div>
               </div>
-              <div class="row g-3 align-items-center">
-                <div class="col-auto">
-                  <label for="confirmationNouveauPassword" class="form-label">Confirmation du nouveau mot de
-                    passe</label>
-                </div>
-                <div class="col-auto">
-                  <input type="password" id="confirmationNouveauPassword" class="form-control"
-                    aria-describedby="passwordHelpInline">
-                </div>
-                <div class="col-auto">
-                  <span id="passwordHelpInline" class="form-text">
-                    Entre 8 et 20 characteres.
-                  </span>
-                </div>
+              <div class="mb-3">
+                  <label for="confirmationNouveauPassword" class="control-label">Confirmation du nouveau mot de passe</label>
+                  <input type="password" id="confirmationNouveauPassword" class="form-control" aria-describedby="passwordHelpInline">
+                  <div class="col-auto">
+                    <span id="passwordHelpInline" class="form-text nbCharacteres">Entre 8 et 20 characteres</span>
+                  </div>
               </div>
           </div>
           <div class="modal-footer">
@@ -498,6 +477,32 @@
         </div>
       </div>
     </div>
+
+
+            <!-- Modal Se déconnecter -->
+            <!-- TODO: modifier la redirection avec angular! -->
+            <div class="modal fade" id="seDeconnecter" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Se déconnecter</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>Etes-vous sur de vouloir vous déconnecter?</h6>
+                            <p id="recapCommande"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            ><a href="PageAcceuilConnec.html" id="lienDeconnection">Oui</a></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
 
 
 
@@ -558,7 +563,13 @@
   //changer l'avatar d'un joueur sur cette page
   //TODO: faire en sorte de pouvoir le changer sur toutes les autres pages de manière dynamique!
   function changeURLAvatar(event) {
-    newUrlLogoAdmin = event.srcElement.currentSrc
+    $('#'+event2+' img').css("border","none");
+    $('#'+event+' img').css("border","4px solid cornflowerblue");
+    console.log("event:" +'#'+event+' img');
+    newUrlLogoAdmin = $('#'+event+' img').attr('src');
+    event2=event;
+    // newUrlLogoAdmin = event.srcElement.currentSrc;
+    
   }
 
   function changeAvatar() {

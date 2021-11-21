@@ -50,12 +50,12 @@
 }
 
 #avatars {
-  background-color: thistle;
+  background-color:#e5e5e5;
 }
 
-.choixAvatar {
+/* .choixAvatar {
   background-color: thistle !important;
-}
+} */
 
 .deconec {
   justify-content: right;
@@ -131,3 +131,14 @@ main{
     content: none !important;
   }
 
+
+  /* textes sous la validation des mots de passe en italique */
+  .nbCharacteres{
+    font-style: italic;
+  }
+
+  /*Bouton validation deconnexion*/
+  #lienDeconnection{
+    text-decoration:none; 
+    color: white;
+  }
