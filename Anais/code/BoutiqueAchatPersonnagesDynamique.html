@@ -137,7 +137,8 @@
                                             onclick="changeAvatar(event)" src="../asset/img/avatar/avatar_belle.jpg"
                                             class="logo_avatar rounded-circle" /></a>
                                     <a class="dropdown-item choixAvatar" id="avatarRaiponce" href="#"><img id="avatar6"
-                                            onclick="changeAvatar(event)" src="../asset/img/avatar/avatar_blanche_neige.jpg"
+                                            onclick="changeAvatar(event)"
+                                            src="../asset/img/avatar/avatar_blanche_neige.jpg"
                                             class="logo_avatar rounded-circle" /></a>
                                     <a class="dropdown-item choixAvatar" id="avatarCendrillon" href="#"><img
                                             id="avatar4" onclick="changeAvatar(event)"
@@ -173,7 +174,8 @@
                                     <a class="nav-link" href="modifProfilJoueur.html">Gestion du Profil</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="PageAcceuilConnec.html">Déconnexion</a>
+                                    <a class="nav-link" href="#" data-bs-toggle="modal"
+                                        data-bs-target="#seDeconnecter">Déconnexion</a>
                                 </li>
                             </ul>
                         </div>
@@ -281,6 +283,29 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
                             <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
                                 onclick="viderPanier()">Oui</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Se déconnecter -->
+            <!-- TODO: modifier la redirection avec angular! -->
+            <div class="modal fade" id="seDeconnecter" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Se déconnecter</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h6>Etes-vous sur de vouloir vous déconnecter?</h6>
+                            <p id="recapCommande"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Retour</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><a
+                                    href="PageAcceuilConnec.html" id="lienDeconnection">Oui</a></button>
                         </div>
                     </div>
                 </div>

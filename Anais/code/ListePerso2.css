@@ -312,6 +312,11 @@ button{
   position: relative;
 }
 
+ /*Bouton validation deconnexion*/
+ #lienDeconnection{
+  text-decoration:none; 
+  color: white;
+}
 
 /* #checkIcon{
   color: green;
