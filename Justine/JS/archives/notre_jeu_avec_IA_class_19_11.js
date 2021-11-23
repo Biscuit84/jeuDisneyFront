@@ -1,19 +1,12 @@
 
 
-
-// lancement partie var
-var partieEnCours = true;
-var Tour = 0;
-var joueurActuel = 0;
-var tourActuel = document.getElementById("NbTour");
-var tourJoueur = document.getElementById("JoueurTour");
-
 // nombre de case du plateau
 format=nbcaseDemande();
 var nbcasePlateau = format[0];
 var nBcaseW = format[1];
 var nBcaseH = format[2];
 var listeCases = [];
+
 
 wMax=$("#canvasesdiv").width(); // on prepare le responsive !
 hMax=$("#canvasesdiv").height();
@@ -57,17 +50,16 @@ slider.oninput = function() {
   var velocityH = 1; // nb de pixel d'avancement du pion par raffraichissement (10ms)
   var velocityV = 1;
   var tauxRaffraichissement = 10; // vitesse du setinterval
-
+  var Tour = 0;
+  var joueurActuel = 0;
+  var tourActuel = document.getElementById("NbTour");
+  var tourJoueur = document.getElementById("JoueurTour");
 
   //var feu=false;
   BF =  document.getElementById("beforeFireworks");
   BF.style.display = "none";
   BF2 =  document.getElementById("afterFireworks");
   BF2.style.display = "none";
-  gameover = document.getElementById("textFinPerdu");
-  gameover.style.display = "none";
-  win = document.getElementById("textFinGagne");
-  win.style.display = "none";
 
   // init image des canvas
   var backgroundImage = new Image();
@@ -118,7 +110,7 @@ slider.oninput = function() {
 
 // TODO: effacer futurPositionXPlayer, futurPositionYPlayer, car obselete
     class pionPlayer  {
-      constructor(numeroPassage, image, positionXPlayer, positionYPlayer, positionIndexCasePlayerSuivante, positionIndexCasePlayerPrecedente, positionIndexCasePlayer, futurePositionIndexCasePlayer, playerIsMoving, playedTurn, finished){
+      constructor(numeroPassage, image, positionXPlayer, positionYPlayer, positionIndexCasePlayerSuivante, positionIndexCasePlayerPrecedente, positionIndexCasePlayer, futurePositionIndexCasePlayer, playerIsMoving, playedTurn){
         this.numeroPassage= numeroPassage; //ordre de passage
         this.image=image; //image du pion
         this.positionXPlayer=positionXPlayer;
@@ -129,15 +121,14 @@ slider.oninput = function() {
         this.futurePositionIndexCasePlayer=futurePositionIndexCasePlayer;
         this.playerIsMoving= playerIsMoving;
         this.playedTurn=playedTurn;
-        this.finished=finished;
       }
     }
 
   // création des objets pion
-   pionJoueur = new pionPlayer(0,"../img/player.png",0,0,0,0,0,0,false,0,false);
-   pionIA1    = new pionPlayer(1,"../img/ennemi.jpg",0,0,0,0,0,0,false,0,false);
-   pionIA2    = new pionPlayer(2,"../img/donald.png",0,0,0,0,0,0,false,0,false);
-   pionIA3    = new pionPlayer(3,"../img/dingo.png",0,0,0,0,0,0,false,0,false);
+   pionJoueur = new pionPlayer(0,"../img/player.png",0,0,0,0,0,0,false,0);
+   pionIA1    = new pionPlayer(1,"../img/ennemi.jpg",0,0,0,0,0,0,false,0);
+   pionIA2    = new pionPlayer(2,"../img/donald.png",0,0,0,0,0,0,false,0);
+   pionIA3    = new pionPlayer(3,"../img/dingo.png",0,0,0,0,0,0,false,0);
 
    var listePion = [];
    listePion.push(pionJoueur);
@@ -208,7 +199,6 @@ function Render() {
   drawAll();
 //ctxPlateau.globalCompositeOperation = "source-over"; // pour afficher le pion SUR le fond
 //ctxPlayer.globalCompositeOperation = "source-over"; // pour afficher le pion SUR le fond
-//setInterval()
    slider.oninput = function() {
   output.innerHTML = this.value;
   niveauDeVitesseDuPion = this.value;
@@ -220,10 +210,10 @@ function Render() {
 
 //dessine le fond d'écran et le joueur
 function drawAll() {
-  actualisationBackground = setInterval(drawBackground, tauxRaffraichissement);
-//  drawBackground(); // ne sert à rien
+  setInterval(drawBackground, tauxRaffraichissement);
+  drawBackground(); // ne sert à rien
   drawPlateau();
-  actualisationJoueur = setInterval(drawPlayers, tauxRaffraichissement);
+  setInterval(drawPlayers, tauxRaffraichissement);
 
 
   //if (nombreDe==1){
@@ -238,7 +228,6 @@ function drawBackground() {
   //clearRect(positionx, position y, positionfinale x, position finale y)
   ctxBackground.clearRect(0, 0, w, h);
   ctxBackground.drawImage(backgroundImage, 0, 0, w,h);
-
 }
 
 // dessine le plateau
@@ -327,11 +316,11 @@ function drawPlayers()
   if (pionIA1.playerIsMoving || pionIA2.playerIsMoving || pionIA3.playerIsMoving || pionJoueur.playerIsMoving)
   {
     slider.setAttribute('disabled', true);
-    //console.log("un pion bouge")
+    console.log("un pion bouge")
   }
   else {
     slider.removeAttribute('disabled');
-    //console.log("tous les pions sont à l'arret")
+    console.log("tous les pions sont à l'arret")
 
   }
 }
@@ -435,10 +424,6 @@ else if (n == 7 ) {  velocityH = taillecaseH;    velocityW = taillecaseW;}     /
     else if (diff==0) {
     //  console.log("le pion"+ pion.numeroPassage+ "est à l'arret");
       pion.playerIsMoving = false;
-      if (partieEnCours==false && pion.finished==true)
-      {
-        setTimeout(finDePartie,2000, pion);
-      }
 
     }
   }
@@ -496,7 +481,7 @@ function Jouer(pion) {
 
   if (joueurActuel!=0){ // si ce n'est pas le joueur qui joue on "click" auto sur la suite
     pionSuivant=listePion[joueurActuel+1];
-    setTimeout(FinDeTour, 5000, pionSuivant);
+    setTimeout(FinDeTour, 2000, pionSuivant);
   }
   else if (joueurActuel==3) { //dernier pion avant le joueur
     //joueurActuel=listePion[0].numeroPassage; // on revient au joueur
@@ -522,31 +507,25 @@ function FinDeTour(pion)
 
 // si c'est pas le dernier pion :
 // faire jouer le prochain :
-if (partieEnCours == true)
-{
-    if (joueurActuel!=3 ){
+if (joueurActuel!=3){
 
-           joueurActuel++;
-          // console.log("on incremente le numero du joueur")
-           //console.log(joueurActuel);
+       joueurActuel++;
+      // console.log("on incremente le numero du joueur")
+       //console.log(joueurActuel);
 
-           pionSuivant=listePion[joueurActuel];
-           setTimeout(Jouer, 3000, pionSuivant);
-           $("#boutonJouer").prop('disabled', true);
-           $("#boutonFinDeTour").prop('disabled', true);
-      }
-    else{ // sinon on revient au joueur
-        joueurActuel=0;
-        Tour++;// incrémente le nombre de tour
-        //console.log("nouveau tour")
-        //console.log("joueur suivant :" + joueurActuel);
-        $("#boutonJouer").prop('disabled', false);
-        $("#boutonFinDeTour").prop('disabled', false);
-      }
-}
+       pionSuivant=listePion[joueurActuel];
+       setTimeout(Jouer, 2000, pionSuivant);
+       $("#boutonJouer").prop('disabled', true);
+       $("#boutonFinDeTour").prop('disabled', true);
+  }
+else{ // sinon on revient au joueur
+    joueurActuel=0;
+    Tour++;// incrémente le nombre de tour
+    //console.log("nouveau tour")
+    //console.log("joueur suivant :" + joueurActuel);
+    $("#boutonJouer").prop('disabled', false);
+    $("#boutonFinDeTour").prop('disabled', false);
 
-  else if (partieEnCours==false){
-    //finDePartie(pion);
   }
 
 }
@@ -630,15 +609,11 @@ function TourJoueur(pion){
     var nouvelIndex = Number(pion.positionIndexCasePlayer) + Number(totalDe);
 
     // gere le cas où on dépasse la case arrivee
-    if (nouvelIndex >= listeCases.length - 1) {
+    if (nouvelIndex > listeCases.length - 1) {
       nouvelIndex = listeCases.length - 1;
 
       // et donc ça veut dire qu'on a gagné !
-
-      // la partie est terminée
-      partieEnCours=false;
-      pion.finished=true; // c'est CE pion qui a gagné
-      console.log("la partie est terminée")
+      finDePartie(pion);
     }
 
     //détermine la future position X et Y du player
@@ -650,32 +625,14 @@ function TourJoueur(pion){
 
 function finDePartie(pion) {
 
-
-        $("#boutonJouer").prop('disabled', true);
-        $("#boutonFinDeTour").prop('disabled', true);
-
-      if (pion==pionJoueur){
-        // le joueur à gagner
-        fireworks();
-        //gameover = document.getElementById("textFinGagne");
-        win.style.display = "block";
-
-        } else {
-        // le pion à perdu
-        makeItRain();
-        //gameover = document.getElementById("textFinPerdu");
-        gameover.style.display = "block";
-        }
-
-        // on fait disparaitre le plateau et les pions
-        canvasPlateau.style.display = "none";
-        background.style.display = "none";
-        player.style.display = "none";
-        playerIA1.style.display = "none";
-        playerIA2.style.display = "none";
-        playerIA3.style.display = "none";
-        //clearInterval(actualisationJoueur); // arrete d'actualiser les pions etc
-        //clearInterval(actualisationBackground);
+if (pion==pionJoueur){
+  // le joueur à gagner
+  fireworks();
+}
+  else {
+  // le pion à perdu
+  makeItRain();
+  }
 }
 
 
@@ -730,8 +687,6 @@ var makeItRain = function() {
 
   $('.rain.front-row').append(drops);
   $('.rain.back-row').append(backDrops);
-
-
 }
 
 
