@@ -1,3 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Devonshire&display=swap");
+/* ***************************navbar************************* */
+
+.container-fluid {
+  background-color: thistle;
+  color: purple;
+  height: 5em;
+}
+
+.navbar-light .navbar-brand {
+  color: rgba(168, 45, 137, 0.9);
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+  color: white;
+}
+
+.navbar {
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  z-index: 3;
+}
+
+/* logo du jeu */
+.logo_menu {
+  width: 5em;
+  height: 4em;
+  filter: drop-shadow(-10px 1px 4px Grey);
+  transform: rotate(-10deg);
+}
+
+/* avatar du joueur */
+.logo_admin {
+  width: 5em;
+  height: 4em;
+  filter: drop-shadow(-5px 1px 4px gray);
+}
+
+.logo_avatar {
+  width: 5em;
+  height: 4em;
+}
+
+.logo_avatar:hover {
+  transform: scale(1.5) translateZ(0);
+}
+
+#avatars {
+  background-color: thistle;
+}
+
+.choixAvatar {
+  background-color: thistle !important;
+}
+
+.deconec {
+  justify-content: right;
+}
+
+/* pour ajuster le menu avatars à droite de la page: */
+
+.dropdown-pull-right {
+  float: right !important;
+  right: 0;
+  left: auto;
+}
+
+.dropdown-pull-right>.dropdown-menu {
+  right: 0;
+  left: auto;
+}
+
+#listePanier {
+  min-width: max-content;
+  visibility: hidden;
+  top: 100%;
+  margin-top: 0.5rem;
+}
+
+button{
+  position: relative;
+}
+
+ /*Bouton validation deconnexion*/
+ #lienDeconnection{
+  text-decoration:none; 
+  color: white;
+}
+
+
+
+
 :root{
   --text-light: rgba(255,255,255,0.6);
   --text-lighter: rgba(255,255,255,0.9);
@@ -130,63 +222,6 @@ body{
   
 }
 
-
-
-
-
-
-.container-fluid{
-  background-color:thistle;
-  color:purple;
-  height: 5em;
-
-}
-
-.navbar-light .navbar-brand{
-  color:rgba(168, 45, 137, 0.9);
-}
-
-.navbar-light .navbar-nav .nav-link:hover{
-  color:white;
-}
-
-
-
-.navbar{
-padding-top: 0rem;
-padding-bottom: 0rem;
-}
-
-
-.logo_admin {
-    width: 5em;
-    height: 4em;
-    filter: drop-shadow(-5px 1px 4px gray);
-}
-
-.logo_avatar{
-  width: 5em;
-  height: 4em;
-}
-
-.logo_avatar:hover{
-  transform: scale(1.5) translateZ(0);
-}
-
-#avatars{
-  background-color: thistle;
-
-} 
-
-.choixAvatar{
-  background-color: thistle !important;
-}
-
-
-
-.deconec{
-  justify-content: right;
-}
 
 .dropdown-toggle::after{
   content: none !important;

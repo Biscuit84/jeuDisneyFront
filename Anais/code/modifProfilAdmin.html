@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
 
-  <title>Modification du profil</title>
+  <title>Gestion du profil</title>
   <link rel="icon" type="image/png" href="">
 
   <!-- bootstrap -->
@@ -21,8 +21,8 @@
   <link rel="stylesheet" href="../asset/fontawesome-5.15.4/css/all.css" />
 
   <!-- jquery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-    crossorigin="anonymous"></script>
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script> -->
 
   <!-- googlefont -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -57,20 +57,24 @@
             </div>
 
 
-            <!-- Nombre d'etoiles joueur -->
+            <!-- Menu Navbar -->
             <div class="collapse navbar-collapse" id="navbarNav">
+                <a class="navbar-brand" href="MenuAdmin.html">Accueil</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="#">Niveau</a>
+                  <a class="nav-link disabled" aria-current="page" href="#">Gestion du profil</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Nombre de victoire</a>
+                  <a class="nav-link" href="#">Gestion des comptes</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" id="nombreEtoilesJoueur" href="#">Nombre d'étoiles</a>
+                  <a class="nav-link" id="nombreEtoilesJoueur" href="#">Gestion des parties</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Boutique</a>
+                  <a class="nav-link" href="#">Gestion de la boutique</a>
                 </li>
 
               </ul>
@@ -79,7 +83,7 @@
 
             <!-- avatars -->
             <!-- mettre le logo à gauche de la navbar -->
-            <a class="navbar-brand" href="#">Joueur</a>
+            <a class="navbar-brand" href="#">Admin</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -519,7 +523,7 @@
 
 <script>
 
-  var joueur1 = { id: "idJoueur1", nom: "Nom", prenom: "Prenom", dateNaissance: "2015-03-25", genre: "Femme", pseudo: "JoueurToto", email: "prenom.nom@gmail.com", tel: "non renseigné", mdp: "1234" };
+  var joueur1 = { id: "idJoueur1", nom: "Nom", prenom: "Prenom", dateNaissance: "2000-03-25", genre: "Femme", pseudo: "JoueurToto", email: "prenom.nom@gmail.com", tel: "non renseigné", mdp: "1234" };
 
   // changer nom
   function changeName() {
