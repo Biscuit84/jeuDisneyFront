@@ -70,7 +70,25 @@
   }
 
 
+/* partie de l'int utilisateur sur le coté */
+  #interfaceUtilisateur {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border: solid grey 2px;
+    border-radius: 5px;
+    background-color: #dbbadbc4;
+    width: 15%;
 
+  }
+
+
+  .titreInterface{
+    text-align: center;
+    font-size: 1em;
+    font-family: 'Devonshire', cursive;
+    z-index: 1;
+    }
 /*
   #ecranconnec {
     width: 100%;

@@ -9,34 +9,10 @@
   top :0;
   right: 0;
   left: 0;
-  animation: color-change 10s linear infinite;
+
 }
 
-.fondfond{
-  background: linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%),
-            linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%),
-            linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%);
-            display: flex;
-            position: fixed;
-            top: 4em;
-            bottom: 1rem;
-            right: 0;
-            left: 0;
-            overflow: hidden;
-            margin: auto;
-}
 
-@keyframes color-change {
-            0% {
-                filter: hue-rotate(0deg);
-            }
-            50% {
-                filter: hue-rotate(0deg);
-            }
-            100% {
-                filter: hue-rotate(360deg);
-            }
-        }
 
 /* lance l'animation*/
 #Fireworks>#beforeFireworks,
@@ -319,13 +295,23 @@
 
 /* TEXT DE FIN */
 
-#textFinGagne{
-  font-family: 'Devonshire', cursive;
-  animation: texteG 2s linear infinite;
-
+@mixin anim($name, $dur, $iterate) {
+  animation-name: $name;
+  animation-duration: $dur;
+  animation-iteration-count:$iterate;
 }
 
-@keyframes texteG {
+#textFinGagne{
+  font-family: 'Devonshire', cursive;
+  font-size:8em;
+  text-align:center;
+  align-items:center;
+  align-content:center;
+  @include anim(example, 2s, infinite);
+  margin-top: 40%;
+}
+
+@keyframes example {
   0%{color:purple; text-shadow:0 0 20px pink}
   25%{color:pink; text-shadow:2px 0px 2px pink; transform: translate(0px,100x)}
   40%{color:red; text-shadow:none; transform: translate(0,0)}

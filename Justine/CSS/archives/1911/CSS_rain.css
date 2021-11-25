@@ -1,27 +1,33 @@
 /* **********************************************CSS de la pluie***************************************************************** */
 
 
-
-#pluie {
+#pluie{
   height: 100%;
-  width: 100%;
   margin: 0;
   overflow: hidden;
-  background-image: linear-gradient(to bottom ,rgba(50,50,100,0.7),   rgba(100,90,120,0.7));
-  position: absolute;
-  bottom : 0;
-  top :0;
-  right: 0;
-  left: 0;
-  z-index: 2;
+  /*background: linear-gradient(to bottom, #202020, #111119);*/
+    position: absolute;
+    z-index: 100;
+
+    width: 100%;
+    bottom : 0;
+    top :0;
+    right: 0;
+    left: 0;
 }
 
-
+.rain {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
 
 .rain.back-row {
   display: none;
   z-index: 1;
-  bottom: 10%;
+  bottom: 60px;
   opacity: 0.5;
 }
 
@@ -32,8 +38,8 @@
 .drop {
   position: absolute;
   bottom: 100%;
-  width: 100%;
-  height: 30%;
+  width: 30px;
+  height: 120px;
   pointer-events: none;
   animation: drop 0.5s linear infinite;
 }
@@ -51,10 +57,10 @@
 }
 
 .stem {
-  width: 3px;
+  width: 1px;
   height: 60%;
-  margin-left: 0px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(200, 200, 255, 0.25));
+  margin-left: 15px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.8));
   animation: stem 0.5s linear infinite;
 }
 
@@ -66,7 +72,7 @@
     opacity: 1;
   }
   75% {
-    opacity: 0.2;
+    opacity: 0;
   }
   100% {
     opacity: 0;
@@ -76,13 +82,17 @@
 .splat {
   width: 15px;
   height: 10px;
-  border-top: 3px dotted rgba(255, 255, 255, 0.5);
+  border-top: 2px dotted rgba(255, 255, 255, 1);
   border-radius: 50%;
   opacity: 1;
   transform: scale(0);
   animation: splat 0.5s linear infinite;
+  display: none;
 }
-
+/* sur le sol*/
+body.splat-toggle .splat {
+  display: block;
+}
 
 @keyframes splat {
   0% {
@@ -99,22 +109,28 @@
   }
   100% {
     opacity: 0;
-    transform: scale(2);
+    transform: scale(1.5);
   }
 }
 
-
 /* TEXT DE FIN */
-/*https://codepen.io/FacepalmRobot/pen/yNoypb*/
-
-#textFinPerdu {
-  /*font-family: 'VT323', ;*/
-    font-family: 'Devonshire', cursive;
-  animation: texteP 1s linear infinite;
-
+@mixin anim($name, $dur, $iterate) {
+  animation-name: $name;
+  animation-duration: $dur;
+  animation-iteration-count:$iterate;
 }
 
-@keyframes texteP {
+#textFinPerdu {
+  font-family: 'VT323', ;
+  font-size:8em;
+  text-align:center;
+  align-items:center;
+  align-content:center;
+  @include anim(example, 1s, infinite);
+  margin-top: 40%;
+}
+
+@keyframes example {
   0%{color:purple; text-shadow:0 0 20px pink}
   25%{color:pink; text-shadow:2px 0px 2px pink; transform: translate(-10px,0px)}
   40%{color:red; text-shadow:none; transform: translate(0,0)}

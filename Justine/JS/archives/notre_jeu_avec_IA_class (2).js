@@ -18,11 +18,11 @@ var listeCases = [];
 wMax=$("#canvasesdiv").width(); // on prepare le responsive !
 hMax=$("#canvasesdiv").height();
 //console.log(" TEST TEST TEST");
-//console.log(wMax +" et "+ hMax);
+console.log(wMax +" et "+ hMax);
 
 w = wMax - (wMax%nBcaseW); // pour couper les cases proprement
 h= hMax - (hMax%nBcaseH);
-//console.log((wMax%nBcaseW) +" et "+ (hMax%nBcaseH));
+console.log((wMax%nBcaseW) +" et "+ (hMax%nBcaseH));
 
 // taille du canvas
  //w=800;
@@ -60,27 +60,14 @@ slider.oninput = function() {
 
 
   //var feu=false;
-
-
-
-
   BF =  document.getElementById("beforeFireworks");
   BF.style.display = "none";
   BF2 =  document.getElementById("afterFireworks");
   BF2.style.display = "none";
-  PR =  document.getElementById("pluie");
-  PR.style.display = "none";
-  END =  document.getElementById("InterfaceFinDePartie");
-  //$("#interfaceFinDePartie").css('display','none');
-  //$("#interfaceFinDePartie").hide();
-  END.style.display = "none";4
-  $(".fondfond").css('display','none');
   gameover = document.getElementById("textFinPerdu");
   gameover.style.display = "none";
   win = document.getElementById("textFinGagne");
   win.style.display = "none";
-
-
 
   // init image des canvas
   var backgroundImage = new Image();
@@ -662,50 +649,31 @@ function TourJoueur(pion){
 }
 
 function finDePartie(pion) {
-  $("#tableauDeControl").css('display','none');
-  $("#interfaceUtilisateur").css('display','none');
-  //$('.news').hide();
-  END =  document.getElementById("InterfaceFinDePartie"); // la jquery ne marche pas bien
-  END.style.display = "block";
 
-  //END =  document.getElementById("interfaceFinDePartie");
-  //END.style.display = "flex";
-  //GAME =  document.getElementById("");
-  //GAME.style.display = "none";
 
-        //$("#boutonJouer").prop('disabled', true);
-        //$("#boutonFinDeTour").prop('disabled', true);
+        $("#boutonJouer").prop('disabled', true);
+        $("#boutonFinDeTour").prop('disabled', true);
 
       if (pion==pionJoueur){
         // le joueur à gagner
         fireworks();
         //gameover = document.getElementById("textFinGagne");
-        //win.style.display = "block";
-        $("#fireworks").css('display','flex');
-        $(".texteFin").css('display','flex');
-        $("#textFinGagne").css('display','flex');
-        $(".fondfond").css('display','flex');
+        win.style.display = "block";
 
         } else {
         // le pion à perdu
-        PR =  document.getElementById("pluie");
-        PR.style.display = "flex";
         makeItRain();
-
         //gameover = document.getElementById("textFinPerdu");
         gameover.style.display = "block";
         }
 
         // on fait disparaitre le plateau et les pions
-        PR =  document.getElementById("zoneDuPlateau");
-        PR.style.display = "none";
-        //$("#canvasesdiv").prop('display', "none");
-       canvasPlateau.style.display = "none";
-       background.style.display = "none";
-       player.style.display = "none";
-       playerIA1.style.display = "none";
-       playerIA2.style.display = "none";
-       playerIA3.style.display = "none";
+        canvasPlateau.style.display = "none";
+        background.style.display = "none";
+        player.style.display = "none";
+        playerIA1.style.display = "none";
+        playerIA2.style.display = "none";
+        playerIA3.style.display = "none";
         //clearInterval(actualisationJoueur); // arrete d'actualiser les pions etc
         //clearInterval(actualisationBackground);
 }
@@ -740,15 +708,14 @@ function fireworks(){
 //////////////////////////////////////////////////////////////////////////////////////////
 // rain
 var makeItRain = function() {
-
-
   //clear out everything
   $('.rain').empty();
+
   var increment = 0;
   var drops = "";
   var backDrops = "";
 
-  while (increment <100) {
+  while (increment < 100) {
     //couple random numbers to use for various randomizations
     //random number between 98 and 1
     var randoHundo = (Math.floor(Math.random() * (98 - 1 + 1) + 1));
@@ -763,6 +730,8 @@ var makeItRain = function() {
 
   $('.rain.front-row').append(drops);
   $('.rain.back-row').append(backDrops);
+
+
 }
 
 
